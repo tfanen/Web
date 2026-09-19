@@ -1,0 +1,24 @@
+{
+  "name": "site-tfnen-printing-press",
+  "version": "1.0.0",
+  "description": "موقع مطبعة تفنين المتكامل للخدمات والمطبوعات الإعلانية والورقية والواجهات مع نظام فواتير ولوحة تحكم",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5"
+  },
+  "keywords": [
+    "tafnen",
+    "printing-press",
+    " مطبعة-تفنين",
+    "express",
+    "e-commerce",
+    "invoices"
+  ],
+  "author": "Tafnen Printing Press",
+  "license": "ISC"
+}
