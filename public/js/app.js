@@ -3211,6 +3211,7 @@ function openAddProductModal() {
     document.getElementById('edit-prod-id').value = '';
     document.getElementById('add-prod-title').textContent = 'إضافة منتج أو تابلوه جديد لـ مطبعة تفنين';
     document.getElementById('admin-product-form').reset();
+    document.getElementById('prod-form-unit').value = 'قطعة واحدة';
     document.getElementById('prod-form-image-url').value = '';
     document.getElementById('prod-form-bestseller').checked = false;
 
@@ -3230,7 +3231,7 @@ function editProductAdmin(prodId) {
     document.getElementById('prod-form-category').value = prod.categoryId;
     document.getElementById('prod-form-calcType').value = prod.calcType || 'quantity';
     document.getElementById('prod-form-price').value = prod.basePrice;
-    document.getElementById('prod-form-unit').value = prod.priceUnit;
+    document.getElementById('prod-form-unit').value = prod.priceUnit || 'قطعة واحدة';
     document.getElementById('prod-form-discount-percent').value = prod.discountPercent || '';
     document.getElementById('prod-form-discount-expiry').value = prod.discountExpiry || '';
     document.getElementById('prod-form-image-url').value = prod.image || '';
