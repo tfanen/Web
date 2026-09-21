@@ -606,21 +606,32 @@ function buildProductCardHtml(prod) {
     const cat = state.categories.find(c => c.id === prod.categoryId);
     const catName = cat ? cat.name : 'مطبعة تفنين';
 
+    let displayPrice = prod.basePrice;
+    if (prod.includeTax) {
+        displayPrice = Math.round(prod.basePrice * 1.14);
+    }
+
     let priceHtml = '';
     const hasDiscount = prod.discountPercent && prod.discountPercent > 0;
     if (hasDiscount) {
-        const discountedPrice = Math.round(prod.basePrice * (1 - prod.discountPercent / 100));
+        const discountedPrice = Math.round(displayPrice * (1 - prod.discountPercent / 100));
         priceHtml = `
             <div style="display:flex; flex-direction:column; align-items:flex-end;">
                 <div>
-                    <span style="text-decoration:line-through; color:#94A3B8; font-size:0.85rem; margin-left:6px;">${prod.basePrice} ج.م</span>
+                    <span style="text-decoration:line-through; color:#94A3B8; font-size:0.85rem; margin-left:6px;">${displayPrice} ج.م</span>
                     <span class="price-amount" style="color:#059669;">${discountedPrice} ج.م</span>
                 </div>
+                ${prod.includeTax ? `<span style="font-size:0.68rem; color:#7C3AED; font-weight:700;">(شامل الضريبة)</span>` : ''}
                 ${prod.discountExpiry ? `<span style="font-size:0.7rem; color:#D97706; margin-top:2px;"><i class="fa-solid fa-clock"></i> ينتهي الخصم: ${prod.discountExpiry}</span>` : ''}
             </div>
         `;
     } else {
-        priceHtml = `<span class="price-amount">${prod.basePrice} ج.م</span>`;
+        priceHtml = `
+            <div style="display:flex; flex-direction:column; align-items:flex-end;">
+                <span class="price-amount">${displayPrice} ج.م</span>
+                ${prod.includeTax ? `<span style="font-size:0.68rem; color:#7C3AED; font-weight:700;">(شامل الضريبة)</span>` : ''}
+            </div>
+        `;
     }
 
     return `
@@ -3216,6 +3227,7 @@ function openAddProductModal() {
     document.getElementById('prod-form-unit').value = 'قطعة واحدة';
     document.getElementById('prod-form-image-url').value = '';
     document.getElementById('prod-form-bestseller').checked = false;
+    document.getElementById('prod-form-tax').checked = false;
 
     const previewContainer = document.getElementById('image-upload-preview-container');
     if (previewContainer) previewContainer.style.display = 'none';
@@ -3239,6 +3251,7 @@ function editProductAdmin(prodId) {
     document.getElementById('prod-form-image-url').value = prod.image || '';
     document.getElementById('prod-form-desc').value = prod.description || '';
     document.getElementById('prod-form-bestseller').checked = !!prod.isBestSeller;
+    document.getElementById('prod-form-tax').checked = !!prod.includeTax;
 
     const previewContainer = document.getElementById('image-upload-preview-container');
     const previewImg = document.getElementById('prod-form-image-preview');
@@ -3268,7 +3281,8 @@ async function handleSaveProductSubmit(e) {
         discountExpiry: document.getElementById('prod-form-discount-expiry').value.trim(),
         image: imageUrl,
         description: document.getElementById('prod-form-desc').value,
-        isBestSeller: document.getElementById('prod-form-bestseller').checked
+        isBestSeller: document.getElementById('prod-form-bestseller').checked,
+        includeTax: document.getElementById('prod-form-tax').checked
     };
 
     const method = prodId ? 'PUT' : 'POST';
