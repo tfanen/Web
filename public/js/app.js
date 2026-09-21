@@ -296,12 +296,21 @@ async function fetchInitialData() {
         startHeroCardsCarousel();
         renderPrintsServicesSlider();
 
-        const hash = window.location.hash.replace('#', '');
-        if (['decor', 'prints', 'cards', 'quote', 'home', 'admin'].includes(hash)) {
-            switchTab(hash);
+        const path = window.location.pathname.replace('/', '').trim();
+        if (['decor', 'prints', 'cards', 'quote', 'home', 'admin'].includes(path)) {
+            switchTab(path);
         } else {
             switchTab('home');
         }
+
+        window.addEventListener('popstate', () => {
+            const p = window.location.pathname.replace('/', '').trim();
+            if (['decor', 'prints', 'cards', 'quote', 'home', 'admin'].includes(p)) {
+                switchTab(p);
+            } else {
+                switchTab('home');
+            }
+        });
     } catch (err) {
         console.error('Error in fetchInitialData:', err);
     }
@@ -3445,7 +3454,12 @@ function switchTab(tabName) {
         loadAdminStatsAndTables();
     }
 
-    window.location.hash = tabName;
+    const newPath = tabName === 'home' ? '/' : '/' + tabName;
+    try {
+        window.history.pushState(null, '', newPath);
+    } catch (e) {
+        window.location.hash = tabName;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
