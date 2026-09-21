@@ -1490,7 +1490,19 @@
                         </div>
                         <div class="form-group">
                             <label>وحدة السعر *</label>
-                            <input type="text" id="prod-form-unit" required placeholder="قطعة واحدة، طقم 3 قطع، مجموعة..." style="width:100%; padding:8px 12px; border:1px solid #CBD5E1; border-radius:6px; background:#FFF; color:#000;">
+                            <input type="text" id="prod-form-unit" list="units-list" required placeholder="اختر أو اكتب وحدة السعر..." style="width:100%; padding:8px 12px; border:1px solid #CBD5E1; border-radius:6px; background:#FFF; color:#000;">
+                            <datalist id="units-list">
+                                <option value="قطعة واحدة">
+                                <option value="طقم قطعتين">
+                                <option value="طقم 3 قطع">
+                                <option value="طقم 4 قطع">
+                                <option value="مجموعة كلاسيكية">
+                                <option value="متر مربع">
+                                <option value="متر طول">
+                                <option value="علبة (1000 كارت)">
+                                <option value="رزمة أوراق">
+                                <option value="وحدة">
+                            </datalist>
                         </div>
                     </div>
 

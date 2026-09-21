@@ -2013,13 +2013,14 @@ async function loadAdminStatsAndTables() {
         if (prodTbody) {
             prodTbody.innerHTML = decorProducts.map(p => `
                 <tr>
-                    <td><img src="${p.image}" style="width:40px; height:40px; object-fit:cover; border-radius:4px;"></td>
+                    <td><img src="${p.image}" onerror="this.src='https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&auto=format&fit=crop&q=80'" style="width:40px; height:40px; object-fit:cover; border-radius:4px;"></td>
                     <td><strong>${p.name}</strong></td>
                     <td>${p.categoryId}</td>
                     <td>${p.basePrice} ج.م</td>
                     <td>${p.isBestSeller ? '<span style="color:#D97706; font-weight:800;">🔥 نعم</span>' : 'لا'}</td>
                     <td>
                         <button class="btn btn-outline btn-sm" onclick="editProductAdmin('${p.id}')"><i class="fa-solid fa-pen"></i> تعديل</button>
+                        <button class="btn btn-sm" style="background:#10B981; color:#FFF;" onclick="duplicateProductAdmin('${p.id}')" title="تكرار المنتج"><i class="fa-solid fa-copy"></i> تكرار</button>
                         <button class="btn btn-sm" style="background:#8B5CF6; color:#FFF;" onclick="promoteProductToHero('${p.id}')" title="عرض المنتج كـ كارت هيرو مميز"><i class="fa-solid fa-star"></i> للهيرو</button>
                         <button class="btn btn-sm" style="background:#EF4444; color:#FFF;" onclick="deleteProductAdmin('${p.id}')"><i class="fa-solid fa-trash"></i></button>
                     </td>
@@ -2032,7 +2033,7 @@ async function loadAdminStatsAndTables() {
         if (printsTbody) {
             let combinedPrintRows = state.printsServices.map(s => `
                 <tr>
-                    <td><img src="${s.image}" style="width:45px; height:45px; object-fit:cover; border-radius:6px;"></td>
+                    <td><img src="${s.image}" onerror="this.src='https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&auto=format&fit=crop&q=80'" style="width:45px; height:45px; object-fit:cover; border-radius:6px;"></td>
                     <td><strong>${s.title}</strong></td>
                     <td style="max-width:250px; font-size:0.8rem; color:#64748B;">${s.description}</td>
                     <td>
@@ -2045,11 +2046,12 @@ async function loadAdminStatsAndTables() {
 
             combinedPrintRows += printingProducts.map(p => `
                 <tr>
-                    <td><img src="${p.image}" style="width:45px; height:45px; object-fit:cover; border-radius:6px;"></td>
+                    <td><img src="${p.image}" onerror="this.src='https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&auto=format&fit=crop&q=80'" style="width:45px; height:45px; object-fit:cover; border-radius:6px;"></td>
                     <td><strong>${p.name}</strong> <span style="font-size:0.7rem; color:#0D9488; background:#E0F2FE; padding:2px 6px; border-radius:4px;">كتالوج الطباعة</span></td>
                     <td style="max-width:250px; font-size:0.8rem; color:#64748B;">${p.description}</td>
                     <td>
                         <button class="btn btn-outline btn-sm" onclick="editProductAdmin('${p.id}')"><i class="fa-solid fa-pen"></i> تعديل</button>
+                        <button class="btn btn-sm" style="background:#10B981; color:#FFF;" onclick="duplicateProductAdmin('${p.id}')" title="تكرار المنتج"><i class="fa-solid fa-copy"></i> تكرار</button>
                         <button class="btn btn-sm" style="background:#8B5CF6; color:#FFF;" onclick="promoteProductToHero('${p.id}')" title="عرض في كروت الهيرو"><i class="fa-solid fa-star"></i> للهيرو</button>
                         <button class="btn btn-sm" style="background:#EF4444; color:#FFF;" onclick="deleteProductAdmin('${p.id}')"><i class="fa-solid fa-trash"></i></button>
                     </td>
@@ -2064,7 +2066,7 @@ async function loadAdminStatsAndTables() {
         if (heroTbody) {
             heroTbody.innerHTML = state.heroCards.map(c => `
                 <tr>
-                    <td><img src="${c.image}" style="width:55px; height:45px; object-fit:cover; border-radius:6px;"></td>
+                    <td><img src="${c.image}" onerror="this.src='https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&auto=format&fit=crop&q=80'" style="width:55px; height:45px; object-fit:cover; border-radius:6px;"></td>
                     <td>
                         <span style="font-size:0.75rem; color:#7C3AED; font-weight:700;">${c.badge}</span>
                         <div><strong>${c.title}</strong></div>
@@ -3335,6 +3337,49 @@ async function handleQuoteSubmit(e) {
         document.getElementById('quote-form').reset();
     } catch (err) {
         alert('حدث خطأ أثناء إرسال الطلب');
+    }
+}
+
+async function duplicateProductAdmin(prodId) {
+    const prod = state.products.find(p => p.id === prodId);
+    if (!prod) return;
+
+    if (!confirm(`هل أنت متأكد من رغبتك في تكرار المنتج "${prod.name}"؟`)) return;
+
+    const duplicatedBody = {
+        name: prod.name + ' (نسخة)',
+        categoryId: prod.categoryId,
+        calcType: prod.calcType || 'quantity',
+        basePrice: prod.basePrice,
+        priceUnit: prod.priceUnit || 'قطعة واحدة',
+        discountPercent: prod.discountPercent || 0,
+        discountExpiry: prod.discountExpiry || '',
+        image: prod.image,
+        description: prod.description || '',
+        isBestSeller: false,
+        options: prod.options || {}
+    };
+
+    try {
+        const res = await fetch('/api/products', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${state.currentUser.id}`
+            },
+            body: JSON.stringify(duplicatedBody)
+        }).then(r => r.json());
+
+        if (res.success) {
+            alert('✅ تم تكرار المنتج بنجاح!');
+            await fetchInitialData();
+            switchTab('admin');
+            await loadAdminStatsAndTables();
+        } else {
+            alert(res.message || 'تعذر تكرار المنتج');
+        }
+    } catch (err) {
+        alert('حدث خطأ أثناء تكرار المنتج');
     }
 }
 
