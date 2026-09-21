@@ -1964,6 +1964,12 @@ a:hover { color: var(--primary-purple-dark); }
     transition: border 0.2s;
 }
 
+.form-group select option, select option {
+    background-color: #1E1B4B !important;
+    color: #FFFFFF !important;
+    padding: 10px;
+}
+
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     border-color: #A855F7;
 }
