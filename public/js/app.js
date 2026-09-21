@@ -3285,6 +3285,7 @@ async function handleSaveProductSubmit(e) {
             alert(res.message);
             closeModal('add-product-modal');
             await fetchInitialData();
+            switchTab('admin');
             await loadAdminStatsAndTables();
         } else {
             alert(res.message);

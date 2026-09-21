@@ -252,11 +252,11 @@
       "name": "تابلوه كنفس مودرن - قطعة واحدة (Single Panel)",
       "description": "تابلوه كانفاس قطني 100% عالي الجودة مشدود على شاسي خشب سويدي مع خيار إضافة إطار مودرن خشبي فاخر.",
       "basePrice": 450,
-      "priceUnit": "تابلوه قطعة واحدة",
+      "priceUnit": "قطعة واحدة",
       "calcType": "quantity",
       "isBestSeller": true,
       "icon": "fa-layer-group",
-      "image": "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&auto=format&fit=crop&q=80",
+      "image": "/uploads/prod-1789995406453-762.jpeg",
       "industries": [
         "realestate",
         "corporate",
@@ -280,7 +280,9 @@
           "كنفس قطني طبيعي 100% طباعة HD",
           "كنفس قطن + طبقة ورنيش حماية وجيل لمس بارز"
         ]
-      }
+      },
+      "discountPercent": 0,
+      "discountExpiry": ""
     },
     {
       "id": "prod-safer-2",
@@ -288,11 +290,11 @@
       "name": "طقم تابلوهات مودرن 3 قطع متناسقة (3-Piece Canvas Set)",
       "description": "طقم تابلوهات حائط جداري مكون من 3 قطع متناسقة التصميم والألوان لإعطاء لمسة ديكورية فاخرة للصالات والمكاتب.",
       "basePrice": 1250,
-      "priceUnit": "طقم 3 قطع",
+      "priceUnit": "قطعة واحدة",
       "calcType": "quantity",
       "isBestSeller": true,
       "icon": "fa-layer-group",
-      "image": "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&auto=format&fit=crop&q=80",
+      "image": "/uploads/prod-1789995432527-10.jpeg",
       "industries": [
         "realestate",
         "corporate",
@@ -314,7 +316,9 @@
           "كنفس قطني 100% طباعة ألوان ثابتة",
           "كنفس مع ورنيش حماية وجيل لمس بارز 3D"
         ]
-      }
+      },
+      "discountPercent": 0,
+      "discountExpiry": ""
     },
     {
       "id": "prod-safer-3",
@@ -1249,11 +1253,11 @@
       "name": "تابلوه مودرن تجريدي - لمسات ذهبية وكحلي",
       "description": "لوحة تجريدية حديثة بتناغم ألوان الكحلي والذهبي مع طبقة جيل لمس بارزة تضفي فخامة على الصالونات والمكاتب.",
       "basePrice": 520,
-      "priceUnit": "تابلوه قطعة واحدة",
+      "priceUnit": "قطعة واحدة",
       "calcType": "quantity",
       "isBestSeller": true,
       "icon": "fa-palette",
-      "image": "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&auto=format&fit=crop&q=80",
+      "image": "/uploads/prod-1789995487838-369.jpeg",
       "options": {
         "panelSize": [
           "مقاس 50×70 سم",
@@ -1267,7 +1271,9 @@
           "برواز ذهبي فاخر",
           "برواز بني خشابي"
         ]
-      }
+      },
+      "discountPercent": 0,
+      "discountExpiry": ""
     },
     {
       "id": "prod-tab-islamic-1",
@@ -21032,5 +21038,8 @@
       "showWaBtn": false,
       "waBtnText": ""
     }
-  ]
+  ],
+  "settings": {
+    "includeTax": false
+  }
 }
