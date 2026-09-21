@@ -3276,12 +3276,15 @@ async function handleSaveProductSubmit(e) {
     const method = prodId ? 'PUT' : 'POST';
     const url = prodId ? `/api/products/${prodId}` : '/api/products';
 
+    const adminUser = state.currentUser || JSON.parse(localStorage.getItem('tfnen_user') || '{"id":"u-admin"}');
+    const token = adminUser.id || 'u-admin';
+
     try {
         const res = await fetch(url, {
             method,
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${state.currentUser.id}`
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(body)
         }).then(r => r.json());
@@ -3293,9 +3296,10 @@ async function handleSaveProductSubmit(e) {
             switchTab('admin');
             await loadAdminStatsAndTables();
         } else {
-            alert(res.message);
+            alert(res.message || 'فشل في حفظ المنتج');
         }
     } catch (err) {
+        console.error('Save product error:', err);
         alert('حدث خطأ أثناء حفظ المنتج');
     }
 }
@@ -3303,16 +3307,22 @@ async function handleSaveProductSubmit(e) {
 async function deleteProductAdmin(prodId) {
     if (!confirm('هل أنت تأكد من رغبتك في حذف هذا المنتج من المطبعة؟')) return;
 
+    const adminUser = state.currentUser || JSON.parse(localStorage.getItem('tfnen_user') || '{"id":"u-admin"}');
+    const token = adminUser.id || 'u-admin';
+
     try {
         const res = await fetch(`/api/products/${prodId}`, {
             method: 'DELETE',
-            headers: { 'Authorization': `Bearer ${state.currentUser.id}` }
+            headers: { 'Authorization': `Bearer ${token}` }
         }).then(r => r.json());
 
         if (res.success) {
             alert(res.message);
             await fetchInitialData();
+            switchTab('admin');
             await loadAdminStatsAndTables();
+        } else {
+            alert(res.message || 'تعذر الحذف');
         }
     } catch (err) {
         alert('تعذر الحذف');
