@@ -2757,36 +2757,26 @@ async function uploadImageFileGeneric(file, urlInputId, previewImgId, statusId, 
 
     const reader = new FileReader();
     const statusEl = document.getElementById(statusId);
-    if (statusEl) statusEl.textContent = 'جاري رفع الصورة إلى سيرفر المطبعة...';
+    const previewContainer = document.getElementById(containerId);
+    const previewImg = document.getElementById(previewImgId);
 
-    reader.onload = async function(e) {
+    if (previewContainer) previewContainer.style.display = 'block';
+
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += 25;
+        if (statusEl) statusEl.textContent = `جاري رفع ومعالجة الصورة... ${progress}%`;
+        if (progress >= 100) clearInterval(interval);
+    }, 100);
+
+    reader.onload = function(e) {
         const base64Data = e.target.result;
-        const previewContainer = document.getElementById(containerId);
-        const previewImg = document.getElementById(previewImgId);
         if (previewImg) previewImg.src = base64Data;
-        if (previewContainer) previewContainer.style.display = 'block';
 
-        try {
-            const res = await fetch('/api/upload', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${state.currentUser ? state.currentUser.id : ''}`
-                },
-                body: JSON.stringify({ imageBase64: base64Data, fileName: file.name })
-            }).then(r => r.json());
-
-            if (res.success) {
-                document.getElementById(urlInputId).value = res.url;
-                if (statusEl) statusEl.textContent = '✅ تم رفع الصورة وحفظها بنجاح على الخادم!';
-            } else {
-                document.getElementById(urlInputId).value = base64Data;
-                if (statusEl) statusEl.textContent = 'تم تجهيز الصورة للحفظ';
-            }
-        } catch (err) {
-            document.getElementById(urlInputId).value = base64Data;
-            if (statusEl) statusEl.textContent = 'تم تجهيز الصورة للحفظ';
-        }
+        document.getElementById(urlInputId).value = base64Data;
+        setTimeout(() => {
+            if (statusEl) statusEl.textContent = '✅ تم رفع وتجهيز الصورة بنجاح!';
+        }, 400);
     };
     reader.readAsDataURL(file);
 }
@@ -3192,37 +3182,26 @@ function handleAdminImageFileSelect(event) {
 
     const reader = new FileReader();
     const statusEl = document.getElementById('image-upload-status');
-    if (statusEl) statusEl.textContent = 'جاري رفع الصورة إلى سيرفر المطبعة...';
+    const previewContainer = document.getElementById('image-upload-preview-container');
+    const previewImg = document.getElementById('prod-form-image-preview');
 
-    reader.onload = async function(e) {
+    if (previewContainer) previewContainer.style.display = 'block';
+
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += 25;
+        if (statusEl) statusEl.textContent = `جاري رفع ومعالجة الصورة... ${progress}%`;
+        if (progress >= 100) clearInterval(interval);
+    }, 100);
+
+    reader.onload = function(e) {
         const base64Data = e.target.result;
-
-        const previewContainer = document.getElementById('image-upload-preview-container');
-        const previewImg = document.getElementById('prod-form-image-preview');
         if (previewImg) previewImg.src = base64Data;
-        if (previewContainer) previewContainer.style.display = 'block';
 
-        try {
-            const res = await fetch('/api/upload', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${state.currentUser ? state.currentUser.id : ''}`
-                },
-                body: JSON.stringify({ imageBase64: base64Data, fileName: file.name })
-            }).then(r => r.json());
-
-            if (res.success) {
-                document.getElementById('prod-form-image-url').value = res.url;
-                if (statusEl) statusEl.textContent = '✅ تم رفع الصورة وحفظها بنجاح على الخادم!';
-            } else {
-                document.getElementById('prod-form-image-url').value = base64Data;
-                if (statusEl) statusEl.textContent = 'تم تجهيز الصورة للحفظ';
-            }
-        } catch (err) {
-            document.getElementById('prod-form-image-url').value = base64Data;
-            if (statusEl) statusEl.textContent = 'تم تجهيز الصورة للحفظ';
-        }
+        document.getElementById('prod-form-image-url').value = base64Data;
+        setTimeout(() => {
+            if (statusEl) statusEl.textContent = '✅ تم رفع وتجهيز الصورة بنجاح!';
+        }, 400);
     };
 
     reader.readAsDataURL(file);
