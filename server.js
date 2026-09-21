@@ -955,6 +955,12 @@ app.post('/api/quotes', (req, res) => {
 
 // Serve static uploaded images & static web files
 app.use('/uploads', express.static(UPLOADS_DIR));
+
+app.get('/sitemap.xml', (req, res) => {
+  res.setHeader('Content-Type', 'application/xml');
+  res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('*', (req, res) => {
