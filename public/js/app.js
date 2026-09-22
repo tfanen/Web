@@ -3216,18 +3216,30 @@ async function handleAdminImageFileSelect(event) {
     try {
         const compressedBase64 = await compressImageFile(file);
         if (previewImg) previewImg.src = compressedBase64;
-        document.getElementById('prod-form-image-url').value = compressedBase64;
-        if (statusEl) statusEl.textContent = '✅ تم ضغط وتجهيز الصورة بنجاح!';
-    } catch (err) {
-        console.error('Compression error:', err);
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const base64Data = e.target.result;
-            if (previewImg) previewImg.src = base64Data;
-            document.getElementById('prod-form-image-url').value = base64Data;
+        if (statusEl) statusEl.textContent = 'جاري رفع الصورة إلى Google Drive...';
+
+        const adminUser = state.currentUser || JSON.parse(localStorage.getItem('tfnen_user') || '{"id":"u-admin"}');
+        const token = adminUser.id || 'u-admin';
+
+        const res = await fetch('/api/upload', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ imageBase64: compressedBase64, fileName: file.name })
+        }).then(r => r.json());
+
+        if (res.success && res.url) {
+            document.getElementById('prod-form-image-url').value = res.url;
+            if (statusEl) statusEl.textContent = '✅ تم رفع الصورة إلى Google Drive بنجاح!';
+        } else {
+            document.getElementById('prod-form-image-url').value = compressedBase64;
             if (statusEl) statusEl.textContent = '✅ تم تجهيز الصورة بنجاح!';
-        };
-        reader.readAsDataURL(file);
+        }
+    } catch (err) {
+        console.error('Upload error:', err);
+        if (statusEl) statusEl.textContent = '❌ خطأ أثناء رفع الصورة';
     }
 }
 
