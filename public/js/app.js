@@ -3233,7 +3233,20 @@ function editProductAdmin(prodId) {
     document.getElementById('prod-form-category').value = prod.categoryId;
     document.getElementById('prod-form-calcType').value = prod.calcType || 'quantity';
     document.getElementById('prod-form-price').value = prod.basePrice;
-    document.getElementById('prod-form-unit').value = prod.priceUnit || 'قطعة واحدة';
+
+    const unitSelect = document.getElementById('prod-form-unit');
+    const unitVal = prod.priceUnit || 'قطعة واحدة';
+    if (unitSelect) {
+        let exists = Array.from(unitSelect.options).some(o => o.value === unitVal);
+        if (!exists) {
+            const opt = document.createElement('option');
+            opt.value = unitVal;
+            opt.textContent = unitVal;
+            unitSelect.appendChild(opt);
+        }
+        unitSelect.value = unitVal;
+    }
+
     document.getElementById('prod-form-discount-percent').value = prod.discountPercent || '';
     document.getElementById('prod-form-discount-expiry').value = prod.discountExpiry || '';
     document.getElementById('prod-form-image-url').value = prod.image || '';
