@@ -61,30 +61,13 @@ function writeDb(data) {
     dbCache = data;
   }
 
-  if (isWriting) {
-    writePending = true;
-    return true;
+  try {
+    const jsonStr = JSON.stringify(dbCache, null, 2);
+    fs.writeFileSync(DB_FILE, jsonStr, 'utf8');
+  } catch (err) {
+    // Vercel read-only filesystem handling - RAM cache remains active
+    console.warn('Notice: Read-only file system. Data updated in memory cache.');
   }
-
-  isWriting = true;
-  writePending = false;
-
-  const tempFile = `${DB_FILE}.tmp`;
-  const jsonStr = JSON.stringify(dbCache, null, 2);
-
-  fs.promises.writeFile(tempFile, jsonStr, 'utf8')
-    .then(() => fs.promises.rename(tempFile, DB_FILE))
-    .catch(err => {
-      console.error('Async atomic write error:', err);
-      return fs.promises.writeFile(DB_FILE, jsonStr, 'utf8');
-    })
-    .catch(e => console.error('Fallback write error:', e))
-    .finally(() => {
-      isWriting = false;
-      if (writePending) {
-        setTimeout(writeDb, 30);
-      }
-    });
 
   return true;
 }
