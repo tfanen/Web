@@ -56,6 +56,45 @@ function readDb() {
   return dbCache;
 }
 
+async function uploadDbToDrive(dbData) {
+  const drive = getDriveService();
+  if (!drive) return;
+  try {
+    const jsonStr = JSON.stringify(dbData, null, 2);
+    const folderId = process.env.GOOGLE_DRIVE_FOLDER_ID;
+
+    const listRes = await drive.files.list({
+      q: `name = 'db.json' and '${folderId}' in parents and trashed = false`,
+      fields: 'files(id, name)'
+    });
+
+    const fileMetadata = {
+      name: 'db.json',
+      parents: folderId ? [folderId] : []
+    };
+    const media = {
+      mimeType: 'application/json',
+      body: jsonStr
+    };
+
+    if (listRes.data.files && listRes.data.files.length > 0) {
+      const fileId = listRes.data.files[0].id;
+      await drive.files.update({
+        fileId: fileId,
+        media: media
+      });
+    } else {
+      await drive.files.create({
+        resource: fileMetadata,
+        media: media,
+        fields: 'id'
+      });
+    }
+  } catch (err) {
+    console.error('Error syncing db.json to Google Drive:', err);
+  }
+}
+
 function writeDb(data) {
   if (data) {
     dbCache = data;
@@ -65,9 +104,11 @@ function writeDb(data) {
     const jsonStr = JSON.stringify(dbCache, null, 2);
     fs.writeFileSync(DB_FILE, jsonStr, 'utf8');
   } catch (err) {
-    // Vercel read-only filesystem handling - RAM cache remains active
-    console.warn('Notice: Read-only file system. Data updated in memory cache.');
+    console.warn('Notice: Read-only file system.');
   }
+
+  // Sync to Google Drive in background
+  uploadDbToDrive(dbCache);
 
   return true;
 }
