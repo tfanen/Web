@@ -260,6 +260,45 @@ app.post('/api/upload', async (req, res) => {
   }
 });
 
+// TEST GOOGLE DRIVE CONNECTION ENDPOINT
+app.get('/api/test-drive', async (req, res) => {
+  try {
+    const drive = getDriveService();
+    if (!drive) {
+      return res.json({
+        success: false,
+        message: '❌ بيانات اعتماد جوجل درايف (GOOGLE_CLIENT_EMAIL أو GOOGLE_PRIVATE_KEY) غير موجودة في متغيرات البيئة بـ Vercel.'
+      });
+    }
+
+    const folderId = process.env.GOOGLE_DRIVE_FOLDER_ID;
+
+    const response = await drive.files.create({
+      resource: {
+        name: 'test-connection.txt',
+        parents: folderId ? [folderId] : []
+      },
+      media: {
+        mimeType: 'text/plain',
+        body: 'مرحباً بك من مطبعة تفنين! تم الاتصال بنجاح بـ Google Drive.'
+      },
+      fields: 'id, name'
+    });
+
+    res.json({
+      success: true,
+      message: `✅ نجح الاتصال بنجاح! تم إنشاء ملف تجريبي في مجلد جوجل درايف برقم ID: ${response.data.id}. تحقق من مجلدك الآن!`
+    });
+  } catch (err) {
+    console.error('Test drive error:', err);
+    res.json({
+      success: false,
+      message: '❌ فشل الاتصال بجوجل درايف بسبب الخطأ التالي: ' + err.message,
+      fullError: err.errors || err.stack
+    });
+  }
+});
+
 // 1. Categories & Industries
 app.get('/api/categories', (req, res) => {
   const db = readDb();
