@@ -3170,8 +3170,34 @@ async function updateOrderStatusAdmin(orderId, newStatus) {
     }
 }
 
+// CLIENT-SIDE IMAGE COMPRESSION HELPER TO PREVENT VERCEL PAYLOAD LIMITS
+function compressImageFile(file, maxWidth = 450, quality = 0.75) {
+    return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+                if (width > maxWidth) {
+                    height = Math.round((height * maxWidth) / width);
+                    width = maxWidth;
+                }
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+                resolve(canvas.toDataURL('image/jpeg', quality));
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
 // ADMIN IMAGE UPLOAD HANDLER
-function handleAdminImageFileSelect(event) {
+async function handleAdminImageFileSelect(event) {
     const file = event.target.files[0];
     if (!file) return;
 
@@ -3180,31 +3206,29 @@ function handleAdminImageFileSelect(event) {
         return;
     }
 
-    const reader = new FileReader();
     const statusEl = document.getElementById('image-upload-status');
     const previewContainer = document.getElementById('image-upload-preview-container');
     const previewImg = document.getElementById('prod-form-image-preview');
 
     if (previewContainer) previewContainer.style.display = 'block';
+    if (statusEl) statusEl.textContent = 'جاري ضغط ومعالجة الصورة...';
 
-    let progress = 0;
-    const interval = setInterval(() => {
-        progress += 25;
-        if (statusEl) statusEl.textContent = `جاري رفع ومعالجة الصورة... ${progress}%`;
-        if (progress >= 100) clearInterval(interval);
-    }, 100);
-
-    reader.onload = function(e) {
-        const base64Data = e.target.result;
-        if (previewImg) previewImg.src = base64Data;
-
-        document.getElementById('prod-form-image-url').value = base64Data;
-        setTimeout(() => {
-            if (statusEl) statusEl.textContent = '✅ تم رفع وتجهيز الصورة بنجاح!';
-        }, 400);
-    };
-
-    reader.readAsDataURL(file);
+    try {
+        const compressedBase64 = await compressImageFile(file);
+        if (previewImg) previewImg.src = compressedBase64;
+        document.getElementById('prod-form-image-url').value = compressedBase64;
+        if (statusEl) statusEl.textContent = '✅ تم ضغط وتجهيز الصورة بنجاح!';
+    } catch (err) {
+        console.error('Compression error:', err);
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const base64Data = e.target.result;
+            if (previewImg) previewImg.src = base64Data;
+            document.getElementById('prod-form-image-url').value = base64Data;
+            if (statusEl) statusEl.textContent = '✅ تم تجهيز الصورة بنجاح!';
+        };
+        reader.readAsDataURL(file);
+    }
 }
 
 function openAddProductModal() {
