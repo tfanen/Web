@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-p2-24",
-      "categoryId": "canvas-islamic",
-      "name": "ولسوف يعطيك ربك فترضى – تابلوهات مودرن (SA75302)",
-      "description": "تابلوه ولسوف يعطيك ربك فترضى بتصميم مودرن أنيق (كود: SA75302).",
-      "basePrice": 456,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-1",
       "categoryId": "canvas-islamic",
       "name": "لوحات حائط مودرن إسلامية بذكر الله وزهور (SA104169)",
