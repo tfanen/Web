@@ -56,43 +56,67 @@ function readDb() {
   return dbCache;
 }
 
-async function uploadDbToDrive(dbData) {
-  const drive = getDriveService();
-  if (!drive) return;
-  try {
-    const jsonStr = JSON.stringify(dbData, null, 2);
-    const folderId = process.env.GOOGLE_DRIVE_FOLDER_ID;
+const https = require('https');
 
-    const listRes = await drive.files.list({
-      q: `name = 'db.json' and '${folderId}' in parents and trashed = false`,
-      fields: 'files(id, name)'
-    });
-
-    const fileMetadata = {
-      name: 'db.json',
-      parents: folderId ? [folderId] : []
-    };
-    const media = {
-      mimeType: 'application/json',
-      body: jsonStr
-    };
-
-    if (listRes.data.files && listRes.data.files.length > 0) {
-      const fileId = listRes.data.files[0].id;
-      await drive.files.update({
-        fileId: fileId,
-        media: media
-      });
-    } else {
-      await drive.files.create({
-        resource: fileMetadata,
-        media: media,
-        fields: 'id'
-      });
-    }
-  } catch (err) {
-    console.error('Error syncing db.json to Google Drive:', err);
+function commitDbToGitHub(dbData) {
+  const token = process.env.GITHUB_TOKEN;
+  const repo = process.env.GITHUB_REPO || 'tfanen/Web';
+  if (!token) {
+    console.warn('GITHUB_TOKEN not found in environment variables.');
+    return;
   }
+
+  const jsonStr = JSON.stringify(dbData, null, 2);
+  const contentEncoded = Buffer.from(jsonStr).toString('base64');
+
+  const sendGitHubRequest = (method, path, data) => {
+    return new Promise((resolve, reject) => {
+      const options = {
+        hostname: 'api.github.com',
+        path: path,
+        method: method,
+        headers: {
+          'User-Agent': 'Tafnen-Press-App',
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      };
+
+      const req = https.request(options, (res) => {
+        let body = '';
+        res.on('data', chunk => body += chunk);
+        res.on('end', () => {
+          try {
+            resolve(JSON.parse(body));
+          } catch (e) {
+            resolve(body);
+          }
+        });
+      });
+
+      req.on('error', reject);
+      if (data) req.write(JSON.stringify(data));
+      req.end();
+    });
+  };
+
+  (async () => {
+    try {
+      const getRes = await sendGitHubRequest('GET', `/repos/${repo}/contents/data/db.json`);
+      const sha = getRes && getRes.sha ? getRes.sha : null;
+
+      const putData = {
+        message: 'Auto-update db.json from admin panel',
+        content: contentEncoded,
+        sha: sha
+      };
+
+      const putRes = await sendGitHubRequest('PUT', `/repos/${repo}/contents/data/db.json`, putData);
+      console.log('Successfully committed db.json to GitHub:', putRes.commit ? putRes.commit.sha : 'Updated');
+    } catch (err) {
+      console.error('Error committing db.json to GitHub:', err);
+    }
+  })();
 }
 
 function writeDb(data) {
@@ -107,8 +131,8 @@ function writeDb(data) {
     console.warn('Notice: Read-only file system.');
   }
 
-  // Sync to Google Drive in background
-  uploadDbToDrive(dbCache);
+  // Commit to GitHub in background
+  commitDbToGitHub(dbCache);
 
   return true;
 }
