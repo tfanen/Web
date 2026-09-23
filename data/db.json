@@ -2573,23 +2573,6 @@
       }
     },
     {
-      "id": "prod-islamic-p5-12",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه – ألا بذكر الله تطئمن القلوب (SA13120)",
-      "description": "تابلوه آية ألا بذكر الله تطمئن القلوب الأكثر مبيعاً (كود: SA13120).",
-      "basePrice": 596,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 60×90 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p5-13",
       "categoryId": "canvas-islamic",
       "name": "تابلوهات آيات قرآنية – مصر (SA13117)",
