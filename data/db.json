@@ -3610,23 +3610,6 @@
       }
     },
     {
-      "id": "prod-p7-7",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه دعاء البركة في المنزل (SA107854)",
-      "description": "تابلوه مودرن كانفاس عالي الجودة بتصميم فاخر يناسب الديكور الحديث (كود: SA107854).",
-      "basePrice": 1206,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-p7-8",
       "categoryId": "canvas-abstract",
       "name": "لوحة فنية أشكال تجريدية متداخلة (SA107853)",
