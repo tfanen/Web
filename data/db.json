@@ -8166,23 +8166,6 @@
       }
     },
     {
-      "id": "prod-p38-10",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه آية الكرسي بخط الكوفي الجميل (SA98621)",
-      "description": "تابلوه مودرن كانفاس عالي الجودة بتصميم فاخر يناسب الديكور الحديث (كود: SA98621).",
-      "basePrice": 1416,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-p39-1",
       "categoryId": "canvas-custom",
       "name": "تابلوه بصمة العائلة وتاريخ التأسيس (SA98620)",
