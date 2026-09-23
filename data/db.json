@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-23",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوهات المعوذات – اكريليك مع برواز ذهبى (SA80665)",
-      "description": "تابلوهات المعوذات طباعة أكريليك فاخرة مع إطار برواز ذهبي (كود: SA80665).",
-      "basePrice": 1192,
-      "priceUnit": "طقم لوحات أكريليك",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "طقم 3 قطع أكريليك"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p3-1",
       "categoryId": "canvas-islamic",
       "name": "تابلوه رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ (SA75297)",
