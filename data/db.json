@@ -16326,23 +16326,6 @@
       }
     },
     {
-      "id": "prod-p89-4",
-      "categoryId": "canvas-islamic",
-      "name": "لوحة المعوذات وآية النور فخمة (SA26917)",
-      "description": "تابلوه مودرن كانفاس عالي الجودة بتصميم فاخر يناسب الديكور الحديث (كود: SA26917).",
-      "basePrice": 1156,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-p89-5",
       "categoryId": "canvas-custom",
       "name": "تابلوه اسماء الأحباء وتواريخهم المميزة (SA26916)",
