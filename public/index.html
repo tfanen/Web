@@ -964,8 +964,14 @@
 
                     <!-- 3. Admin Decor Products View -->
                     <div id="admin-subtab-products" class="admin-subtab" style="display:none;">
-                        <div class="admin-actions-bar" style="margin-bottom:15px;">
+                        <div class="admin-actions-bar" style="margin-bottom:15px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
                             <button class="btn btn-primary" onclick="openAddProductModal()"><i class="fa-solid fa-plus"></i> إضافة منتج ديكور جديد</button>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <label style="font-weight:700; font-size:0.85rem; color:#475569; margin:0;">فلترة حسب القسم:</label>
+                                <select id="admin-product-category-filter" onchange="loadAdminStatsAndTables()" style="padding:6px 12px; border:1px solid #CBD5E1; border-radius:6px; background:#FFF; font-size:0.85rem; color:#000;">
+                                    <option value="all">جميع الأقسام</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="table-responsive">
                             <table class="admin-table">
