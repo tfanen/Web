@@ -2029,10 +2029,44 @@
       }
     },
     {
-      "id": "prod-islamic-p2-23",
+      "id": "prod-islamic-p2-2",
       "categoryId": "canvas-islamic",
-      "name": "تابلوه مودرن – رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي (SA75357)",
-      "description": "تابلوه دعاء إقامة الصلاة رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي (كود: SA75357).",
+      "name": "لوحات مودرن – الله نور السموات و الارض (SA80643)",
+      "description": "لوحات مودرن آية الله نور السماوات والأرض (كود: SA80643).",
+      "basePrice": 1648,
+      "priceUnit": "طقم لوحات",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "طقم 3 قطع فاخرة"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-4",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوه – وَمَنْ يَتَّقِ اللَّهَ يَجْعَلْ لَهُ مَخْرَجًا (SA80625)",
+      "description": "تابلوه ومن يتق الله يجعل له مخرجا ورزقا من حيث لا يحتسب (كود: SA80625).",
+      "basePrice": 1367,
+      "priceUnit": "طقم لوحات",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "طقم متناسق"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-5",
+      "categoryId": "canvas-islamic",
+      "name": "لوحه حائط – وَمَا تَوْفِيقِي إِلا بِاللَّهِ (SA80627)",
+      "description": "لوحة وما توفيقي إلا بالله عليه توكلت وإليه أنيب (كود: SA80627).",
       "basePrice": 596,
       "priceUnit": "تابلوه قطعة واحدة",
       "calcType": "quantity",
@@ -2046,16 +2080,33 @@
       }
     },
     {
-      "id": "prod-islamic-5",
+      "id": "prod-islamic-p2-6",
       "categoryId": "canvas-islamic",
-      "name": "تابلوهات ديكور فصبر جميل – مزخرف بالزهور (SA90982)",
-      "description": "تابلوهات ديكور فصبر جميل مزخرفة بالزهور الهادئة (كود: SA90982).",
-      "basePrice": 549,
+      "name": "تابلوه مودرن – ( لئن شكرتم لأزيدنكم ) (SA80620)",
+      "description": "تابلوه آية الشكر لئن شكرتم لأزيدنكم (كود: SA80620).",
+      "basePrice": 456,
       "priceUnit": "تابلوه قطعة واحدة",
       "calcType": "quantity",
       "isBestSeller": false,
       "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
+      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مقاس 50×70 سم"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-7",
+      "categoryId": "canvas-islamic",
+      "name": "فتاه مصرية بملابس تقليدية و حروف عربية (SA75603)",
+      "description": "لوحة فنية تراثية تجمع بين فتاة مصرية بملابس تقليدية وحروف عربية أصيلة (كود: SA75603).",
+      "basePrice": 456,
+      "priceUnit": "تابلوه تراثي",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
       "options": {
         "panelSize": [
           "مقاس 60×90 سم"
@@ -2063,10 +2114,197 @@
       }
     },
     {
-      "id": "prod-islamic-10",
+      "id": "prod-islamic-p2-8",
       "categoryId": "canvas-islamic",
-      "name": "تابلوه مودرن – وَرَحْمَتِي وَسِعَتْ كُلَّ شَيْءٍ (SA90498)",
-      "description": "تابلوه مودرن آية ورحمتي وسعت كل شيء (كود: SA90498).",
+      "name": "وجعل بينكم موده و رحمه (SA75455)",
+      "description": "تابلوه الآية القرآنية وجعل بينكم مودة ورحمة لإثراء الديكور الزوجي (كود: SA75455).",
+      "basePrice": 596,
+      "priceUnit": "تابلوه قطعة واحدة",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مقاس 70×100 سم"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-9",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوهات مودرن المعوذات ببرواز ذهبى (SA75448)",
+      "description": "تابلوهات المعوذات الإيمانية بإطار برواز ذهبي فاخر (كود: SA75448).",
+      "basePrice": 1648,
+      "priceUnit": "طقم لوحات",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "طقم 3 قطع برواز ذهبي"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-10",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوهات مودرن الشهادتين (SA75442)",
+      "description": "تابلوه الشهادتين لا إله إلا الله محمد رسول الله بتصميم مودرن (كود: SA75442).",
+      "basePrice": 912,
+      "priceUnit": "طقم لوحات",
+      "calcType": "quantity",
+      "isBestSeller": false,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "طقم متناسق"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-11",
+      "categoryId": "canvas-islamic",
+      "name": "تبارك الذي جعل في السماء بروجا – لوحات ديكور (SA75437)",
+      "description": "لوحات ديكور آية تبارك الذي جعل في السماء بروجاً وجعل فيها سراجاً وبمرا منيرا (كود: SA75437).",
+      "basePrice": 456,
+      "priceUnit": "تابلوه قطعة واحدة",
+      "calcType": "quantity",
+      "isBestSeller": false,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مقاس 50×70 سم"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-12",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوه مودرن – وعِنْدَهُ مَفاتِحُ الغَيْبِ لا يَعْلَمُها إلّا هو (SA75431)",
+      "description": "تابلوه وعنده مفاتح الغيب لا يعلمها إلا هو (كود: SA75431).",
+      "basePrice": 912,
+      "priceUnit": "تابلوه قطعة واحدة",
+      "calcType": "quantity",
+      "isBestSeller": false,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مقاس 70×100 سم"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-15",
+      "categoryId": "canvas-islamic",
+      "name": "الحمد لله رب العالمين – تابلوهات مودرن (SA75405)",
+      "description": "تابلوهات مودرن الحمد لله رب العالمين بتصميم عصري (كود: SA75405).",
+      "basePrice": 1099,
+      "priceUnit": "طقم لوحات",
+      "calcType": "quantity",
+      "isBestSeller": false,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "طقم متناسق"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-16",
+      "categoryId": "canvas-islamic",
+      "name": "فمن عفا وأصلح فأجره على الله – لوحات فنية (SA75400)",
+      "description": "لوحة فنية آية فمن عفا وأصلح فأجره على الله (كود: SA75400).",
+      "basePrice": 456,
+      "priceUnit": "تابلوه قطعة واحدة",
+      "calcType": "quantity",
+      "isBestSeller": false,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مقاس 50×70 سم"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-17",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوهات – يارب بارك هذا البيت (SA75392)",
+      "description": "تابلوهات البركة والدعاء يارب بارك هذا البيت (كود: SA75392).",
+      "basePrice": 2104,
+      "priceUnit": "مجموعة تابلوهات كبرى",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مجموعة كبرى للمجالس"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-18",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوهات مودرن ايه الكرسى و الشهادتين (SA75385)",
+      "description": "تابلوهات مودرن آية الكرسي والشهادتين (كود: SA75385).",
+      "basePrice": 1367,
+      "priceUnit": "طقم لوحات",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "طقم متناسق"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-19",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوه مودرن ( اللَّهُمَّ إِنَّكَ عُفُوٌّ كَرِيمٌ ) (SA75379)",
+      "description": "تابلوه اللهم إنك عفو تحب العفو فاعف عني (كود: SA75379).",
+      "basePrice": 912,
+      "priceUnit": "تابلوه قطعة واحدة",
+      "calcType": "quantity",
+      "isBestSeller": false,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مقاس 60×90 سم"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-21",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوهات مودرن ( ولا تيأسوا من روح الله ) (SA75367)",
+      "description": "تابلوه آية ولا تيأسوا من روح الله إنه لا ييأس من روح القوم الكافرون (كود: SA75367).",
+      "basePrice": 596,
+      "priceUnit": "تابلوه قطعة واحدة",
+      "calcType": "quantity",
+      "isBestSeller": false,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مقاس 60×90 سم"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-p2-22",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوه مودرن (وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى) (SA75362)",
+      "description": "تابلوه الآية المحفزة ولسوف يعطيك ربك فترضى (كود: SA75362).",
       "basePrice": 456,
       "priceUnit": "تابلوه قطعة واحدة",
       "calcType": "quantity",
@@ -2080,10 +2318,163 @@
       }
     },
     {
-      "id": "prod-islamic-11",
+      "id": "prod-islamic-p2-24",
       "categoryId": "canvas-islamic",
-      "name": "يارب بارك هذا البيت – و جعل بينكم مودة و رحمة (SA86984)",
-      "description": "تابلوه دعاء البركة في المنزل وجعل بينكم مودة ورحمة (كود: SA86984).",
+      "name": "ولسوف يعطيك ربك فترضى – تابلوهات مودرن (SA75302)",
+      "description": "تابلوه ولسوف يعطيك ربك فترضى بتصميم مودرن أنيق (كود: SA75302).",
+      "basePrice": 456,
+      "priceUnit": "تابلوه قطعة واحدة",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مقاس 50×70 سم"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-1",
+      "categoryId": "canvas-islamic",
+      "name": "لوحات حائط مودرن إسلامية بذكر الله وزهور (SA104169)",
+      "description": "لوحات حائط مودرن إسلامية بذكر الله وزهور رقيقة (كود: SA104169).",
+      "basePrice": 2560,
+      "priceUnit": "طقم 3 قطع",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "3 قطع مقاس 50×70 سم"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-2",
+      "categoryId": "canvas-islamic",
+      "name": "لوحات حائط مودرن ايات قرآنية وزهور وردية (SA102274)",
+      "description": "لوحات حائط مودرن آيات قرآنية وزهور وردية هادئة (كود: SA102274).",
+      "basePrice": 1367,
+      "priceUnit": "طقم 3 قطع",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "3 قطع مقاس 40×60 سم"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-3",
+      "categoryId": "canvas-islamic",
+      "name": "لوحة فنية لآية قرآنية بتصميم إسلامي مذهب (SA102269)",
+      "description": "لوحة فنية لآية قرآنية بتصميم إسلامي مذهب فخم (كود: SA102269).",
+      "basePrice": 456,
+      "priceUnit": "تابلوه قطعة واحدة",
+      "calcType": "quantity",
+      "isBestSeller": false,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مقاس 60×90 سم"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-4",
+      "categoryId": "canvas-islamic",
+      "name": "لوحات حائط مودرن بتصميم خط عربي إسلامي متميز (SA102264)",
+      "description": "لوحات حائط مودرن بتصميم خط عربي إسلامي متميز (كود: SA102264).",
+      "basePrice": 596,
+      "priceUnit": "تابلوه قطعة واحدة",
+      "calcType": "quantity",
+      "isBestSeller": false,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مقاس 50×70 سم"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-6",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوهات مودرن سورة الفلق – سورة الناس (SA90976)",
+      "description": "تابلوهات مودرن سورة الفلق وسورة الناس (كود: SA90976).",
+      "basePrice": 912,
+      "priceUnit": "طقم قطعتين",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "قطعتين مقاس 50×70 سم"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-7",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوه المعوذات و ايه الكرسى و الفاتحة و الكافرون – بوهو (SA90939)",
+      "description": "مجموعة تابلوهات بوهو شاملة المعوذات وآية الكرسي والفاتحة والكافرون (كود: SA90939).",
+      "basePrice": 3484,
+      "priceUnit": "مجموعة تابلوهات كبرى",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مجموعة متكاملة للمجالس"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-9",
+      "categoryId": "canvas-islamic",
+      "name": "لوحات حائط وصايا لقمان لابنه ( سورة لقمان ) (SA90887)",
+      "description": "لوحات حائط فخمة لوصايا لقمان الحكيم لابنه من سورة لقمان (كود: SA90887).",
+      "basePrice": 4208,
+      "priceUnit": "مجموعة لوحات فاخرة",
+      "calcType": "quantity",
+      "isBestSeller": false,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مجموعة جدارية كبرى"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-12",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوهات بيج و تركواز اسلامى مودرن (SA86972)",
+      "description": "تابلوهات بتدرجات البيج والتركواز الإسلامي المودرن (كود: SA86972).",
+      "basePrice": 1367,
+      "priceUnit": "طقم لوحات",
+      "calcType": "quantity",
+      "isBestSeller": false,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "طقم متناسق"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-14",
+      "categoryId": "canvas-islamic",
+      "name": "توكل و صبر – هادئ – تابلوه مودرن Boho (SA86941)",
+      "description": "تابلوه توكل وصبر بستايل بوهو الهادئ والمميز (كود: SA86941).",
       "basePrice": 1367,
       "priceUnit": "طقم لوحات",
       "calcType": "quantity",
@@ -2092,15 +2483,32 @@
       "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
       "options": {
         "panelSize": [
-          "طقم 3 قطع"
+          "طقم بوهو متناسق"
         ]
       }
     },
     {
-      "id": "prod-islamic-13",
+      "id": "prod-islamic-15",
       "categoryId": "canvas-islamic",
-      "name": "مودة و رحمة – تابلوه هادئ و بسيط (SA86948)",
-      "description": "تابلوه مودة ورحمة بتصميم هادئ وبسيط للمنازل العصرية (كود: SA86948).",
+      "name": "لوحات مودرن بوهو بينك – التوكل (SA86932)",
+      "description": "لوحات مودرن بوهو تدرجات البينك وكلمة التوكل على الله (كود: SA86932).",
+      "basePrice": 2560,
+      "priceUnit": "طقم لوحات فاخرة",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مجموعة 3 قطع"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-16",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوه مودرن باب الكعبة و لفظ الجلالة (SA86909)",
+      "description": "تابلوه باب الكعبة المشرفة ولفظ الجلالة بتصميم إيماني مؤثر (كود: SA86909).",
       "basePrice": 1367,
       "priceUnit": "طقم لوحات",
       "calcType": "quantity",
@@ -2109,7 +2517,24 @@
       "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
       "options": {
         "panelSize": [
-          "طقم 2 أو 3 قطع"
+          "طقم متناسق"
+        ]
+      }
+    },
+    {
+      "id": "prod-islamic-17",
+      "categoryId": "canvas-islamic",
+      "name": "تابلوه بسم الله ما شاء الله (SA86881)",
+      "description": "تابلوه مباركة بسم الله ما شاء الله (كود: SA86881).",
+      "basePrice": 912,
+      "priceUnit": "تابلوه قطعة واحدة",
+      "calcType": "quantity",
+      "isBestSeller": false,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "مقاس 60×90 سم"
         ]
       }
     },
