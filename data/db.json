@@ -2063,23 +2063,6 @@
       }
     },
     {
-      "id": "prod-islamic-p2-4",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه – وَمَنْ يَتَّقِ اللَّهَ يَجْعَلْ لَهُ مَخْرَجًا (SA80625)",
-      "description": "تابلوه ومن يتق الله يجعل له مخرجا ورزقا من حيث لا يحتسب (كود: SA80625).",
-      "basePrice": 1367,
-      "priceUnit": "طقم لوحات",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "طقم متناسق"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p2-5",
       "categoryId": "canvas-islamic",
       "name": "لوحه حائط – وَمَا تَوْفِيقِي إِلا بِاللَّهِ (SA80627)",
