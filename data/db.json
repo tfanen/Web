@@ -6279,23 +6279,6 @@
       }
     },
     {
-      "id": "prod-p21-5",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه دعاء دخول المنزل والخروج منه (SA98796)",
-      "description": "تابلوه مودرن كانفاس عالي الجودة بتصميم فاخر يناسب الديكور الحديث (كود: SA98796).",
-      "basePrice": 816,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-p21-6",
       "categoryId": "canvas-custom",
       "name": "لوحة اقتباسات تحفيزية مميزة (SA98795)",
