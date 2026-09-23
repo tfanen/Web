@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-4",
-      "categoryId": "canvas-islamic",
-      "name": "لوحات حائط مودرن بتصميم خط عربي إسلامي متميز (SA102264)",
-      "description": "لوحات حائط مودرن بتصميم خط عربي إسلامي متميز (كود: SA102264).",
-      "basePrice": 596,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-5",
       "categoryId": "canvas-islamic",
       "name": "تابلوهات ديكور فصبر جميل – مزخرف بالزهور (SA90982)",
