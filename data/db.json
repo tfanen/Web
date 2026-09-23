@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-5",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوهات ديكور فصبر جميل – مزخرف بالزهور (SA90982)",
-      "description": "تابلوهات ديكور فصبر جميل مزخرفة بالزهور الهادئة (كود: SA90982).",
-      "basePrice": 549,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 60×90 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-6",
       "categoryId": "canvas-islamic",
       "name": "تابلوهات مودرن سورة الفلق – سورة الناس (SA90976)",
