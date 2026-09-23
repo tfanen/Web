@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-p3-14",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوهات مودرن – ورود بألوان هادئة (SA75012)",
-      "description": "تابلوهات إسلامية مزخرفة بالورود بألوان هادئة ومريحة للأعصاب (كود: SA75012).",
-      "basePrice": 2560,
-      "priceUnit": "مجموعة لوحات كبرى",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مجموعة فاخرة"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p3-15",
       "categoryId": "canvas-islamic",
       "name": "تابلوهات عربى – حياه – حب (SA74942)",
