@@ -12348,23 +12348,6 @@
       }
     },
     {
-      "id": "prod-p67-7",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه دعاء الصبر والفرج القريب (SA67734)",
-      "description": "تابلوه مودرن كانفاس عالي الجودة بتصميم فاخر يناسب الديكور الحديث (كود: SA67734).",
-      "basePrice": 1226,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-p67-8",
       "categoryId": "canvas-custom",
       "name": "لوحة ذكريات العائلة السعيدة (SA67733)",
