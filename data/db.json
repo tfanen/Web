@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-p2-5",
-      "categoryId": "canvas-islamic",
-      "name": "لوحه حائط – وَمَا تَوْفِيقِي إِلا بِاللَّهِ (SA80627)",
-      "description": "لوحة وما توفيقي إلا بالله عليه توكلت وإليه أنيب (كود: SA80627).",
-      "basePrice": 596,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 60×90 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p2-6",
       "categoryId": "canvas-islamic",
       "name": "تابلوه مودرن – ( لئن شكرتم لأزيدنكم ) (SA80620)",
