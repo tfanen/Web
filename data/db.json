@@ -2131,23 +2131,6 @@
       }
     },
     {
-      "id": "prod-islamic-p5-13",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوهات آيات قرآنية – مصر (SA13117)",
-      "description": "تابلوهات آيات قرآنية بتصاميم راقية (كود: SA13117).",
-      "basePrice": 549,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 60×90 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p5-14",
       "categoryId": "canvas-islamic",
       "name": "تابلوهات مودرن إن مع العسر يسراً (SA13108)",
