@@ -3232,35 +3232,25 @@ async function handleAdminImageFileSelect(event) {
     const previewImg = document.getElementById('prod-form-image-preview');
 
     if (previewContainer) previewContainer.style.display = 'block';
-    if (statusEl) statusEl.textContent = 'جاري ضغط ومعالجة الصورة...';
+    if (statusEl) {
+        statusEl.textContent = '⏳ جاري ضغط ومعالجة الصورة...';
+        statusEl.style.color = '#7C3AED';
+    }
 
     try {
         const compressedBase64 = await compressImageFile(file);
         if (previewImg) previewImg.src = compressedBase64;
-        if (statusEl) statusEl.textContent = 'جاري رفع الصورة إلى Google Drive...';
-
-        const adminUser = state.currentUser || JSON.parse(localStorage.getItem('tfnen_user') || '{"id":"u-admin"}');
-        const token = adminUser.id || 'u-admin';
-
-        const res = await fetch('/api/upload', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ imageBase64: compressedBase64, fileName: file.name })
-        }).then(r => r.json());
-
-        if (res.success && res.url) {
-            document.getElementById('prod-form-image-url').value = res.url;
-            if (statusEl) statusEl.textContent = '✅ تم رفع الصورة إلى Google Drive بنجاح!';
-        } else {
-            document.getElementById('prod-form-image-url').value = compressedBase64;
-            if (statusEl) statusEl.textContent = '✅ تم تجهيز الصورة بنجاح!';
+        document.getElementById('prod-form-image-url').value = compressedBase64;
+        if (statusEl) {
+            statusEl.textContent = '✅ تم ضغط وتجهيز الصورة بنجاح وجاهزة للحفظ!';
+            statusEl.style.color = '#059669';
         }
     } catch (err) {
-        console.error('Upload error:', err);
-        if (statusEl) statusEl.textContent = '❌ خطأ أثناء رفع الصورة';
+        console.error('Compression error:', err);
+        if (statusEl) {
+            statusEl.textContent = '❌ حدث خطأ أثناء معالجة الصورة';
+            statusEl.style.color = '#EF4444';
+        }
     }
 }
 
@@ -3752,13 +3742,20 @@ async function handleBulkFolderUpload(event) {
 
     let successCount = 0;
     const total = files.length;
-    alert(`جاري معالجة ورفع ${total} صورة وإنشاء منتجاتها تلقائياً... يرجى الانتظار قليلاً.`);
+
+    const statusDiv = document.createElement('div');
+    statusDiv.id = 'bulk-progress-overlay';
+    statusDiv.style.cssText = 'position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#1E1B4B; color:#FFF; padding:15px 30px; border-radius:12px; z-index:99999; font-weight:700; box-shadow:0 10px 30px rgba(0,0,0,0.4); font-size:1rem; direction:rtl;';
+    statusDiv.innerHTML = `<i class="fa-solid fa-spinner fa-spin" style="margin-left:8px;"></i> جاري استيراد ومعالجة الصور (0 من ${total})...`;
+    document.body.appendChild(statusDiv);
 
     for (let i = 0; i < total; i++) {
         const file = files[i];
         if (!file.type.startsWith('image/')) continue;
 
         try {
+            statusDiv.innerHTML = `<i class="fa-solid fa-spinner fa-spin" style="margin-left:8px;"></i> جاري معالجة واستيراد الصورة (${i + 1} من ${total}): ${file.name}`;
+
             let cleanName = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, ' ');
             cleanName = 'لوحة فنية مودرن - ' + cleanName;
 
@@ -3798,6 +3795,7 @@ async function handleBulkFolderUpload(event) {
         }
     }
 
+    document.body.removeChild(statusDiv);
     alert(`✅ تم بنجاح استيراد ${successCount} من أصل ${total} صورة وإنشاء منتجاتها تلقائياً!`);
     await fetchInitialData();
     switchTab('admin');
