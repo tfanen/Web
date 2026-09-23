@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-21",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه مودرن – إنَّ مَعَ العُسْرِ يُسْراً (SA80676)",
-      "description": "تابلوه آية إن مع العسر يسرا بتصميم مريح ومحفز (كود: SA80676).",
-      "basePrice": 456,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-22",
       "categoryId": "canvas-islamic",
       "name": "تابلوه مودرن لفظ الجلاله (SA80671)",
