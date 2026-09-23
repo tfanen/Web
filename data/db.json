@@ -4120,23 +4120,6 @@
       }
     },
     {
-      "id": "prod-p8-3",
-      "categoryId": "canvas-islamic",
-      "name": "لوحة لفظ الجلالة الله ومحمد (SA107848)",
-      "description": "تابلوه مودرن كانفاس عالي الجودة بتصميم فاخر يناسب الديكور الحديث (كود: SA107848).",
-      "basePrice": 1356,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-p8-4",
       "categoryId": "canvas-abstract",
       "name": "لوحة تجريدية عصرية بألوان الباستيل (SA107847)",
@@ -6374,23 +6357,6 @@
       "isBestSeller": false,
       "icon": "fa-crown",
       "image": "https://images.unsplash.com/photo-1578926375605-eaf7559b1458?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
-      "id": "prod-p22-2",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه آية الكرسي بخط الكوفي الجميل (SA98789)",
-      "description": "تابلوه مودرن كانفاس عالي الجودة بتصميم فاخر يناسب الديكور الحديث (كود: SA98789).",
-      "basePrice": 1056,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
       "options": {
         "panelSize": [
           "مقاس 50×70 سم"
