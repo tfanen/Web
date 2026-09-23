@@ -10104,23 +10104,6 @@
       }
     },
     {
-      "id": "prod-p47-4",
-      "categoryId": "canvas-islamic",
-      "name": "لوحة مباركة البيت الجديد ورزق الحلال (SA67937)",
-      "description": "تابلوه مودرن كانفاس عالي الجودة بتصميم فاخر يناسب الديكور الحديث (كود: SA67937).",
-      "basePrice": 566,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-p47-5",
       "categoryId": "canvas-custom",
       "name": "تابلوه بصمة العائلة وتاريخ الارتباط (SA67936)",
@@ -12426,23 +12409,6 @@
       "isBestSeller": false,
       "icon": "fa-crown",
       "image": "https://images.unsplash.com/photo-1578926375605-eaf7559b1458?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
-      "id": "prod-p62-1",
-      "categoryId": "canvas-islamic",
-      "name": "لوحة مباركة البيت الجديد ورزق الحلال (SA67790)",
-      "description": "تابلوه مودرن كانفاس عالي الجودة بتصميم فاخر يناسب الديكور الحديث (كود: SA67790).",
-      "basePrice": 1336,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
       "options": {
         "panelSize": [
           "مقاس 50×70 سم"
