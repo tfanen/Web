@@ -59,48 +59,48 @@ function readDb() {
 const https = require('https');
 
 function commitDbToGitHub(dbData) {
-  const token = process.env.GITHUB_TOKEN;
-  const repo = process.env.GITHUB_REPO || 'tfanen/Web';
-  if (!token) {
-    console.warn('GITHUB_TOKEN not found in environment variables.');
-    return;
-  }
+  return new Promise(async (resolve) => {
+    const token = process.env.GITHUB_TOKEN;
+    const repo = process.env.GITHUB_REPO || 'tfanen/Web';
+    if (!token) {
+      console.warn('GITHUB_TOKEN not found in environment variables.');
+      return resolve(false);
+    }
 
-  const jsonStr = JSON.stringify(dbData, null, 2);
-  const contentEncoded = Buffer.from(jsonStr).toString('base64');
+    const jsonStr = JSON.stringify(dbData, null, 2);
+    const contentEncoded = Buffer.from(jsonStr).toString('base64');
 
-  const sendGitHubRequest = (method, path, data) => {
-    return new Promise((resolve, reject) => {
-      const options = {
-        hostname: 'api.github.com',
-        path: path,
-        method: method,
-        headers: {
-          'User-Agent': 'Tafnen-Press-App',
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      };
-
-      const req = https.request(options, (res) => {
-        let body = '';
-        res.on('data', chunk => body += chunk);
-        res.on('end', () => {
-          try {
-            resolve(JSON.parse(body));
-          } catch (e) {
-            resolve(body);
+    const sendGitHubRequest = (method, path, data) => {
+      return new Promise((resolveReq, rejectReq) => {
+        const options = {
+          hostname: 'api.github.com',
+          path: path,
+          method: method,
+          headers: {
+            'User-Agent': 'Tafnen-Press-App',
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
           }
+        };
+
+        const req = https.request(options, (res) => {
+          let body = '';
+          res.on('data', chunk => body += chunk);
+          res.on('end', () => {
+            try {
+              resolveReq(JSON.parse(body));
+            } catch (e) {
+              resolveReq(body);
+            }
+          });
         });
+
+        req.on('error', rejectReq);
+        if (data) req.write(JSON.stringify(data));
+        req.end();
       });
+    };
 
-      req.on('error', reject);
-      if (data) req.write(JSON.stringify(data));
-      req.end();
-    });
-  };
-
-  (async () => {
     try {
       const getRes = await sendGitHubRequest('GET', `/repos/${repo}/contents/data/db.json`);
       const sha = getRes && getRes.sha ? getRes.sha : null;
@@ -113,13 +113,15 @@ function commitDbToGitHub(dbData) {
 
       const putRes = await sendGitHubRequest('PUT', `/repos/${repo}/contents/data/db.json`, putData);
       console.log('Successfully committed db.json to GitHub:', putRes.commit ? putRes.commit.sha : 'Updated');
+      resolve(true);
     } catch (err) {
       console.error('Error committing db.json to GitHub:', err);
+      resolve(false);
     }
-  })();
+  });
 }
 
-function writeDb(data) {
+async function writeDb(data) {
   if (data) {
     dbCache = data;
   }
@@ -131,8 +133,8 @@ function writeDb(data) {
     console.warn('Notice: Read-only file system.');
   }
 
-  // Commit to GitHub in background
-  commitDbToGitHub(dbCache);
+  // Await commit to GitHub so Vercel keeps the function alive until complete
+  await commitDbToGitHub(dbCache);
 
   return true;
 }
@@ -769,12 +771,12 @@ app.get('/api/products/:id', (req, res) => {
   res.json({ success: true, data: prod });
 });
 
-app.post('/api/products', (req, res) => {
+app.post('/api/products', async (req, res) => {
   if (!req.user || req.user.role !== 'admin') {
     return res.status(403).json({ success: false, message: 'غير مصرح للقيام بهذه العملية' });
   }
 
-  const { categoryId, name, description, basePrice, priceUnit, calcType, icon, image, industries, options, isBestSeller, discountPercent, discountExpiry } = req.body;
+  const { categoryId, name, description, basePrice, priceUnit, calcType, icon, image, industries, options, isBestSeller, discountPercent, discountExpiry, includeTax } = req.body;
   if (!name || !categoryId || basePrice === undefined) {
     return res.status(400).json({ success: false, message: 'برجاء تعبئة اسم المنتج والقسم والسعر الأساسي' });
   }
@@ -793,17 +795,18 @@ app.post('/api/products', (req, res) => {
     isBestSeller: isBestSeller || false,
     discountPercent: parseFloat(discountPercent) || 0,
     discountExpiry: discountExpiry || '',
+    includeTax: includeTax || false,
     industries: industries || [],
     options: options || {}
   };
 
   db.products.push(newProduct);
-  writeDb(db);
+  await writeDb(db);
 
   res.json({ success: true, message: 'تم إضافة المنتج بنجاح', data: newProduct });
 });
 
-app.put('/api/products/:id', (req, res) => {
+app.put('/api/products/:id', async (req, res) => {
   if (!req.user || req.user.role !== 'admin') {
     return res.status(403).json({ success: false, message: 'غير مصرح للقيام بهذه العملية' });
   }
@@ -823,12 +826,12 @@ app.put('/api/products/:id', (req, res) => {
   };
 
   db.products[index] = updated;
-  writeDb(db);
+  await writeDb(db);
 
   res.json({ success: true, message: 'تم تحديث بيانات المنتج بنجاح', data: updated });
 });
 
-app.delete('/api/products/:id', (req, res) => {
+app.delete('/api/products/:id', async (req, res) => {
   if (!req.user || req.user.role !== 'admin') {
     return res.status(403).json({ success: false, message: 'غير مصرح للقيام بهذه العملية' });
   }
@@ -836,7 +839,7 @@ app.delete('/api/products/:id', (req, res) => {
   const db = readDb();
   const filtered = db.products.filter(p => p.id !== req.params.id);
   db.products = filtered;
-  writeDb(db);
+  await writeDb(db);
 
   res.json({ success: true, message: 'تم حذف المنتج بنجاح' });
 });
