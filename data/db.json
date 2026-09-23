@@ -14116,23 +14116,6 @@
       }
     },
     {
-      "id": "prod-p78-2",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه آية الكرسي بخط الثلث المملوكي (SA67629)",
-      "description": "تابلوه مودرن كانفاس عالي الجودة بتصميم فاخر يناسب الديكور الحديث (كود: SA67629).",
-      "basePrice": 566,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-p78-3",
       "categoryId": "canvas-custom",
       "name": "لوحة مخصصة بعبارات ترحيبية للمنزل (SA67628)",
