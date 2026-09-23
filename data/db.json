@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-p2-20",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه مودرن بسملة بالخط الكوفى الهندسى (SA75373)",
-      "description": "تابلوه البسملة بالخط الكوفي الهندسي البديع (كود: SA75373).",
-      "basePrice": 1192,
-      "priceUnit": "تابلوه فخم",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 70×100 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p2-21",
       "categoryId": "canvas-islamic",
       "name": "تابلوهات مودرن ( ولا تيأسوا من روح الله ) (SA75367)",
