@@ -2131,23 +2131,6 @@
       }
     },
     {
-      "id": "prod-islamic-p5-19",
-      "categoryId": "canvas-islamic",
-      "name": "لوحات مودرن اسلامى للبيع فى مصر (SA9339)",
-      "description": "مجموعة لوحات مودرن إسلامي فاخرة (كود: SA9339).",
-      "basePrice": 2969,
-      "priceUnit": "مجموعة فاخرة كبرى",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مجموعة متكاملة كبرى"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p5-20",
       "categoryId": "canvas-islamic",
       "name": "لوحات مودرن لغرف النوم فى مصر (SA6487)",
