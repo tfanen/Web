@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-p3-8",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوهات و لوحات (ما شاء الله لا قوة الا بالله) (SA75242)",
-      "description": "تابلوه تبارك الرحمن وما شاء الله لا قوة إلا بالله (كود: SA75242).",
-      "basePrice": 2279,
-      "priceUnit": "مجموعة لوحات فاخرة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مجموعة كبرى للمجالس"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p3-9",
       "categoryId": "canvas-islamic",
       "name": "تابلوه مودرن (وهو على كل شئ قدير) (SA75235)",
