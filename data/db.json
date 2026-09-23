@@ -1964,23 +1964,6 @@
       }
     },
     {
-      "id": "prod-saferart-4",
-      "categoryId": "canvas-islamic",
-      "name": "لوحات – الإخلاص و المعوذتين (SA22317)",
-      "description": "طقم لوحات آيات سورة الإخلاص والمعوذتين ببرواز فاخر (كود: SA22317).",
-      "basePrice": 1648,
-      "priceUnit": "طقم لوحات",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "طقم 3 قطع فاخرة"
-        ]
-      }
-    },
-    {
       "id": "prod-saferart-5",
       "categoryId": "canvas-abstract",
       "name": "لوحه تجريديه (SA16189)",
