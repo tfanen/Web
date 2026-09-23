@@ -1975,7 +1975,7 @@ function switchAdminSubTab(subTab) {
 
 async function loadAdminStatsAndTables() {
     try {
-        const [ordersRes, prodRes, tickRes, slidesRes, heroRes, printsRes, quotesRes, cbRes] = await Promise.all([
+        const [ordersRes, prodRes, tickRes, slidesRes, heroRes, printsRes, quotesRes, cbRes, catRes] = await Promise.all([
             fetch('/api/orders', { headers: { 'Authorization': `Bearer ${state.currentUser.id}` } }).then(r => r.json()),
             fetch('/api/products').then(r => r.json()),
             fetch('/api/tickers').then(r => r.json()),
@@ -1983,7 +1983,8 @@ async function loadAdminStatsAndTables() {
             fetch('/api/hero-cards').then(r => r.json()),
             fetch('/api/prints-services').then(r => r.json()),
             fetch('/api/quotes', { headers: { 'Authorization': `Bearer ${state.currentUser.id}` } }).then(r => r.json()),
-            fetch('/api/chatbot-rules').then(r => r.json())
+            fetch('/api/chatbot-rules').then(r => r.json()),
+            fetch('/api/categories').then(r => r.json()).catch(() => ({ success: false }))
         ]);
 
         const orders = ordersRes.data || [];
@@ -1994,6 +1995,7 @@ async function loadAdminStatsAndTables() {
         state.printsServices = printsRes.data || [];
         state.quotes = quotesRes.data || [];
         if (cbRes && cbRes.success) state.chatbotRules = cbRes.data || [];
+        if (catRes && catRes.success) state.categories = catRes.data || [];
 
         const totalRevenue = orders.reduce((sum, o) => sum + (o.grandTotal || 0), 0);
 
@@ -2023,7 +2025,26 @@ async function loadAdminStatsAndTables() {
         'canvas-nature', 'canvas-coffee', 'canvas-custom',
         'canvas-kids', 'canvas-cars-pop', 'canvas-classic'
     ];
-        const decorProducts = products.filter(p => decorCats.includes(p.categoryId));
+        let decorProducts = products.filter(p => decorCats.includes(p.categoryId));
+
+        let cats = state.categories || [];
+        if (cats.length === 0) {
+            const uniqueCatIds = [...new Set(decorProducts.map(p => p.categoryId))];
+            cats = uniqueCatIds.map(id => ({ id, name: id }));
+        }
+
+        const filterSelect = document.getElementById('admin-product-category-filter');
+        if (filterSelect) {
+            const currentVal = filterSelect.value || 'all';
+            const catOptions = ['<option value="all">جميع الأقسام (عرض الكل)</option>']
+                .concat(cats.map(c => `<option value="${c.id}">${c.name || c.id}</option>`));
+            filterSelect.innerHTML = catOptions.join('');
+            filterSelect.value = currentVal;
+
+            if (currentVal !== 'all') {
+                decorProducts = decorProducts.filter(p => p.categoryId === currentVal);
+            }
+        }
 
         // FILTER NON-DECOR PRINTING PRODUCTS
         const printingProducts = products.filter(p => !decorCats.includes(p.categoryId));
