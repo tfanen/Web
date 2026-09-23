@@ -2301,23 +2301,6 @@
       }
     },
     {
-      "id": "prod-islamic-p2-22",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه مودرن (وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى) (SA75362)",
-      "description": "تابلوه الآية المحفزة ولسوف يعطيك ربك فترضى (كود: SA75362).",
-      "basePrice": 456,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p2-24",
       "categoryId": "canvas-islamic",
       "name": "ولسوف يعطيك ربك فترضى – تابلوهات مودرن (SA75302)",
