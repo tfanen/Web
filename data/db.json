@@ -2097,23 +2097,6 @@
       }
     },
     {
-      "id": "prod-islamic-p3-4",
-      "categoryId": "canvas-islamic",
-      "name": "لوحات فنية (هو الله الذي لا إله إلا هو عالم الغيب والشهادة) (SA75279)",
-      "description": "لوحات فنية هو الله الذي لا إله إلا هو عالم الغيب والشهادة (كود: SA75279).",
-      "basePrice": 596,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 70×100 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p3-5",
       "categoryId": "canvas-islamic",
       "name": "تابلوه مودرن (فالله خير حافظاً) (SA75270)",
