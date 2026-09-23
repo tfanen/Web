@@ -6024,23 +6024,6 @@
       }
     },
     {
-      "id": "prod-p24-3",
-      "categoryId": "canvas-islamic",
-      "name": "لوحة أسماء الله الحسنى الفخمة (SA98768)",
-      "description": "تابلوه مودرن كانفاس عالي الجودة بتصميم فاخر يناسب الديكور الحديث (كود: SA98768).",
-      "basePrice": 696,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-p24-4",
       "categoryId": "canvas-custom",
       "name": "تابلوه بصمة العائلة وتاريخ التأسيس (SA98767)",
