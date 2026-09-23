@@ -2454,23 +2454,6 @@
       }
     },
     {
-      "id": "prod-islamic-p3-10",
-      "categoryId": "canvas-islamic",
-      "name": "لوحات مودرن (وجعل بينكم مودة و رحمة) (SA75227)",
-      "description": "لوحات مودرن وجعل بينكم مودة ورحمة لإثراء الديكور (كود: SA75227).",
-      "basePrice": 1367,
-      "priceUnit": "طقم لوحات",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "طقم 3 قطع"
-        ]
-      }
-    },
-    {
       "id": "prod-extra-9",
       "categoryId": "canvas-abstract",
       "name": "تابلوه تجريدي فاخر - أوراق الشجر الذهبية على خلفية سوداء",
@@ -2577,23 +2560,6 @@
       "categoryId": "canvas-islamic",
       "name": "تابلوه مودرن-اسلامي (SA17270)",
       "description": "تابلوه مودرن إسلامي مميز (كود: SA17270).",
-      "basePrice": 456,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
-      "id": "prod-islamic-p5-7",
-      "categoryId": "canvas-islamic",
-      "name": "لتسكنوا إليها – لوحات مودرن لغرف النوم (SA13138)",
-      "description": "لوحات لتسكنوا إليها مخصصة لغرف النوم والديكور الزوجي (كود: SA13138).",
       "basePrice": 456,
       "priceUnit": "تابلوه قطعة واحدة",
       "calcType": "quantity",
