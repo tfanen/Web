@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-10",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه مودرن – وَرَحْمَتِي وَسِعَتْ كُلَّ شَيْءٍ (SA90498)",
-      "description": "تابلوه مودرن آية ورحمتي وسعت كل شيء (كود: SA90498).",
-      "basePrice": 456,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-11",
       "categoryId": "canvas-islamic",
       "name": "يارب بارك هذا البيت – و جعل بينكم مودة و رحمة (SA86984)",
