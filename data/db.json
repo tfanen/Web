@@ -2131,23 +2131,6 @@
       }
     },
     {
-      "id": "prod-islamic-p5-1",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه – وما بكم من نعمة (SA22301)",
-      "description": "تابلوه آية وما بكم من نعمة فمن الله (كود: SA22301).",
-      "basePrice": 456,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p5-2",
       "categoryId": "canvas-islamic",
       "name": "تابلوهات مودرن خط عربى – ببرواز (SA21432)",
