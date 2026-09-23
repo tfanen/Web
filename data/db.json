@@ -2607,23 +2607,6 @@
       }
     },
     {
-      "id": "prod-islamic-p5-21",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوهات مودرن اسلامى عربى (SA3806)",
-      "description": "تابلوهات مودرن إسلامي عربي فخم (كود: SA3806).",
-      "basePrice": 2198,
-      "priceUnit": "مجموعة لوحات",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مجموعة متناسق"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p5-22",
       "categoryId": "canvas-islamic",
       "name": "تابلوه مودرن ايات قرآنية (SA2312)",
