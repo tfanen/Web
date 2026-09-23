@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-p2-21",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوهات مودرن ( ولا تيأسوا من روح الله ) (SA75367)",
-      "description": "تابلوه آية ولا تيأسوا من روح الله إنه لا ييأس من روح القوم الكافرون (كود: SA75367).",
-      "basePrice": 596,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 60×90 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p2-22",
       "categoryId": "canvas-islamic",
       "name": "تابلوه مودرن (وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى) (SA75362)",
