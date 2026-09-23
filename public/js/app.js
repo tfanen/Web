@@ -3740,3 +3740,68 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// BULK FOLDER / MULTI-IMAGE AUTOMATIC UPLOAD ENGINE
+async function handleBulkFolderUpload(event) {
+    const files = event.target.files;
+    if (!files || files.length === 0) return;
+
+    const categoryId = prompt('اختر معرف القسم (Category ID) لهذه المجموعة\n(مثال: canvas-abstract, canvas-islamic, canvas-nature):', 'canvas-abstract');
+    if (!categoryId) return;
+
+    const defaultPrice = parseFloat(prompt('أدخل السعر الأساسي الافتراضي لهذه المجموعة (ج.م):', '456')) || 456;
+
+    let successCount = 0;
+    const total = files.length;
+    alert(`جاري معالجة ورفع ${total} صورة وإنشاء منتجاتها تلقائياً... يرجى الانتظار قليلاً.`);
+
+    for (let i = 0; i < total; i++) {
+        const file = files[i];
+        if (!file.type.startsWith('image/')) continue;
+
+        try {
+            let cleanName = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, ' ');
+            cleanName = 'لوحة فنية مودرن - ' + cleanName;
+
+            const compressedBase64 = await compressImageFile(file, 500, 0.75);
+
+            const productData = {
+                name: cleanName,
+                categoryId: categoryId,
+                calcType: 'quantity',
+                basePrice: defaultPrice,
+                priceUnit: 'قطعة واحدة',
+                discountPercent: 0,
+                discountExpiry: '',
+                image: compressedBase64,
+                description: 'تابلوه مودرن كانفاس عالي الجودة بتصميم فني فاخر يضفي لمسة ساحرة على ديكور منزلك.',
+                isBestSeller: (i === 0),
+                includeTax: false
+            };
+
+            const adminUser = state.currentUser || JSON.parse(localStorage.getItem('tfnen_user') || '{"id":"u-admin"}');
+            const token = adminUser.id || 'u-admin';
+
+            const res = await fetch('/api/products', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(productData)
+            }).then(r => r.json());
+
+            if (res.success) {
+                successCount++;
+            }
+        } catch (err) {
+            console.error('Bulk upload item error:', err);
+        }
+    }
+
+    alert(`✅ تم بنجاح استيراد ${successCount} من أصل ${total} صورة وإنشاء منتجاتها تلقائياً!`);
+    await fetchInitialData();
+    switchTab('admin');
+    await loadAdminStatsAndTables();
+    event.target.value = '';
+}
+
