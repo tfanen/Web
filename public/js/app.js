@@ -2014,6 +2014,16 @@ async function loadAdminStatsAndTables() {
             taxToggle.checked = !!(state.settings && state.settings.includeTax);
         }
 
+        // Render Visitor Counter
+        let visitorsCount = parseInt(localStorage.getItem('tfnen_visitors_count') || '1480');
+        if (!sessionStorage.getItem('tfnen_visited')) {
+            visitorsCount++;
+            localStorage.setItem('tfnen_visitors_count', visitorsCount);
+            sessionStorage.setItem('tfnen_visited', 'true');
+        }
+        const visEl = document.getElementById('stat-total-visitors');
+        if (visEl) visEl.textContent = visitorsCount.toLocaleString();
+
         // Render Chatbot Rules Table & Categories Table
         renderAdminChatbotTable();
         renderAdminCategoriesTableAndDropdowns();
@@ -2054,6 +2064,7 @@ async function loadAdminStatsAndTables() {
         if (prodTbody) {
             prodTbody.innerHTML = decorProducts.map(p => `
                 <tr>
+                    <td><input type="checkbox" class="product-row-checkbox" value="${p.id}" onchange="updateBatchToolbarState()"></td>
                     <td><img src="${p.image}" onerror="this.src='https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&auto=format&fit=crop&q=80'" style="width:40px; height:40px; object-fit:cover; border-radius:4px;"></td>
                     <td><strong>${p.name}</strong></td>
                     <td>${p.categoryId}</td>
@@ -2067,6 +2078,7 @@ async function loadAdminStatsAndTables() {
                     </td>
                 </tr>
             `).join('');
+            updateBatchToolbarState();
         }
 
         // Render Admin Standalone Prints Services Table
@@ -3801,5 +3813,148 @@ async function handleBulkFolderUpload(event) {
     switchTab('admin');
     await loadAdminStatsAndTables();
     event.target.value = '';
+}
+
+// BATCH SELECTION & ACTIONS ENGINE
+function toggleSelectAllProducts(masterCheckbox) {
+    const checkboxes = document.querySelectorAll('.product-row-checkbox');
+    checkboxes.forEach(cb => cb.checked = masterCheckbox.checked);
+    updateBatchToolbarState();
+}
+
+function updateBatchToolbarState() {
+    const checkboxes = document.querySelectorAll('.product-row-checkbox:checked');
+    const toolbar = document.getElementById('batch-actions-toolbar');
+    const label = document.getElementById('selected-count-label');
+    if (!toolbar || !label) return;
+
+    if (checkboxes.length > 0) {
+        toolbar.style.display = 'flex';
+        label.textContent = `تم تحديد ${checkboxes.length} منتج`;
+    } else {
+        toolbar.style.display = 'none';
+    }
+}
+
+async function batchDeleteProducts() {
+    const selected = Array.from(document.querySelectorAll('.product-row-checkbox:checked')).map(cb => cb.value);
+    if (selected.length === 0) return;
+
+    if (!confirm(`هل أنت متأكد من رغبتك في حذف ${selected.length} منتج المحددة؟`)) return;
+
+    const adminUser = state.currentUser || JSON.parse(localStorage.getItem('tfnen_user') || '{"id":"u-admin"}');
+    const token = adminUser.id || 'u-admin';
+
+    for (const id of selected) {
+        try {
+            await fetch(`/api/products/${id}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+        } catch (e) {
+            console.error('Batch delete error for id:', id);
+        }
+    }
+
+    alert('✅ تم حذف المنتجات المحددة بنجاح!');
+    await fetchInitialData();
+    switchTab('admin');
+    await loadAdminStatsAndTables();
+}
+
+async function batchDuplicateProducts() {
+    const selected = Array.from(document.querySelectorAll('.product-row-checkbox:checked')).map(cb => cb.value);
+    if (selected.length === 0) return;
+
+    if (!confirm(`هل أنت متأكد من رغبتك في تكرار ${selected.length} منتج المحددة؟`)) return;
+
+    const adminUser = state.currentUser || JSON.parse(localStorage.getItem('tfnen_user') || '{"id":"u-admin"}');
+    const token = adminUser.id || 'u-admin';
+
+    let count = 0;
+    for (const id of selected) {
+        const prod = state.products.find(p => p.id === id);
+        if (!prod) continue;
+
+        const duplicatedBody = {
+            name: prod.name + ' (نسخة)',
+            categoryId: prod.categoryId,
+            calcType: prod.calcType || 'quantity',
+            basePrice: prod.basePrice,
+            priceUnit: prod.priceUnit || 'قطعة واحدة',
+            discountPercent: prod.discountPercent || 0,
+            discountExpiry: prod.discountExpiry || '',
+            image: prod.image,
+            description: prod.description || '',
+            isBestSeller: false,
+            includeTax: prod.includeTax || false,
+            options: prod.options || {}
+        };
+
+        try {
+            const res = await fetch('/api/products', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(duplicatedBody)
+            }).then(r => r.json());
+
+            if (res.success) count++;
+        } catch (e) {
+            console.error('Batch duplicate error:', e);
+        }
+    }
+
+    alert(`✅ تم بنجاح تكرار ${count} منتج!`);
+    await fetchInitialData();
+    switchTab('admin');
+    await loadAdminStatsAndTables();
+}
+
+async function batchPromoteProductsToHero() {
+    const selected = Array.from(document.querySelectorAll('.product-row-checkbox:checked')).map(cb => cb.value);
+    if (selected.length === 0) return;
+
+    if (!confirm(`هل أنت متأكد من رغبتك في إرسال ${selected.length} منتج المحددة إلى كروت الهيرو؟`)) return;
+
+    let count = 0;
+    for (const id of selected) {
+        const prod = state.products.find(p => p.id === id);
+        if (!prod) continue;
+
+        const heroBody = {
+            title: prod.name,
+            subtitle: prod.description || 'تصميم فاخر من مطبعة تفنين',
+            badge: '🔥 مميز وحصري',
+            tag: `${prod.basePrice} ج.م`,
+            image: prod.image,
+            linkTab: 'decor'
+        };
+
+        try {
+            const adminUser = state.currentUser || JSON.parse(localStorage.getItem('tfnen_user') || '{"id":"u-admin"}');
+            const token = adminUser.id || 'u-admin';
+
+            const res = await fetch('/api/hero-cards', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(heroBody)
+            }).then(r => r.json());
+
+            if (res.success) count++;
+        } catch (e) {
+            console.error('Batch promote error:', e);
+        }
+    }
+
+    alert(`✅ تم بنجاح إرسال ${count} منتج إلى كروت الهيرو الرئيسية!`);
+    await fetchInitialData();
+    switchTab('admin');
+    await loadAdminStatsAndTables();
 }
 
