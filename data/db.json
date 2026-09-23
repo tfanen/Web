@@ -2199,23 +2199,6 @@
       }
     },
     {
-      "id": "prod-islamic-p2-14",
-      "categoryId": "canvas-islamic",
-      "name": "الحمد لله رب العالمين – تابلوه مودرن مقسم (SA75411)",
-      "description": "تابلوه مقسم حمد وشكر لله الحمد لله رب العالمين (كود: SA75411).",
-      "basePrice": 1823,
-      "priceUnit": "طقم مقسم",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "طقم مقسم 3 أو 4 قطع"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p2-15",
       "categoryId": "canvas-islamic",
       "name": "الحمد لله رب العالمين – تابلوهات مودرن (SA75405)",
