@@ -2046,23 +2046,6 @@
       }
     },
     {
-      "id": "prod-extra-10",
-      "categoryId": "canvas-islamic",
-      "name": "طقم تابلوهات إسلامية - سورة الفاتحة وآية الكرسي",
-      "description": "ثنائية إسلامية مباركة لحماية المنزل وبث السكينة والاطمئنان.",
-      "basePrice": 1250,
-      "priceUnit": "طقم قطعتين",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "قطعتين مقاس 60×90 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-extra-11",
       "categoryId": "canvas-nature",
       "name": "تابلوه طبيعة - بحيرة الصنوبر السويسري الصافية",
