@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-14",
-      "categoryId": "canvas-islamic",
-      "name": "توكل و صبر – هادئ – تابلوه مودرن Boho (SA86941)",
-      "description": "تابلوه توكل وصبر بستايل بوهو الهادئ والمميز (كود: SA86941).",
-      "basePrice": 1367,
-      "priceUnit": "طقم لوحات",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "طقم بوهو متناسق"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-15",
       "categoryId": "canvas-islamic",
       "name": "لوحات مودرن بوهو بينك – التوكل (SA86932)",
