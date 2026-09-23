@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-p2-17",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوهات – يارب بارك هذا البيت (SA75392)",
-      "description": "تابلوهات البركة والدعاء يارب بارك هذا البيت (كود: SA75392).",
-      "basePrice": 2104,
-      "priceUnit": "مجموعة تابلوهات كبرى",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مجموعة كبرى للمجالس"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p2-18",
       "categoryId": "canvas-islamic",
       "name": "تابلوهات مودرن ايه الكرسى و الشهادتين (SA75385)",
