@@ -2114,23 +2114,6 @@
       }
     },
     {
-      "id": "prod-islamic-17",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه بسم الله ما شاء الله (SA86881)",
-      "description": "تابلوه مباركة بسم الله ما شاء الله (كود: SA86881).",
-      "basePrice": 912,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 60×90 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-18",
       "categoryId": "canvas-islamic",
       "name": "تابلوه مودرن – بسملة – بنى و ذهبى (SA80693)",
