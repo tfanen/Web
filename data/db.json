@@ -2046,19 +2046,19 @@
       }
     },
     {
-      "id": "prod-islamic-p2-3",
+      "id": "prod-islamic-p2-2",
       "categoryId": "canvas-islamic",
-      "name": "تابلوه مودرن للحائط – الا بذكر الله تطمئن القلوب (SA80638)",
-      "description": "تابلوه آية الا بذكر الله تطمئن القلوب (كود: SA80638).",
-      "basePrice": 456,
-      "priceUnit": "تابلوه قطعة واحدة",
+      "name": "لوحات مودرن – الله نور السموات و الارض (SA80643)",
+      "description": "لوحات مودرن آية الله نور السماوات والأرض (كود: SA80643).",
+      "basePrice": 1648,
+      "priceUnit": "طقم لوحات",
       "calcType": "quantity",
-      "isBestSeller": false,
+      "isBestSeller": true,
       "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&auto=format&fit=crop&q=80",
+      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
       "options": {
         "panelSize": [
-          "مقاس 50×70 سم"
+          "طقم 3 قطع فاخرة"
         ]
       }
     },
