@@ -1351,7 +1351,10 @@
           "مقاس 70×100 سم",
           "مقاس 80×120 سم"
         ]
-      }
+      },
+      "discountPercent": 0,
+      "discountExpiry": "",
+      "includeTax": false
     },
     {
       "id": "prod-tab-coffee-1",
