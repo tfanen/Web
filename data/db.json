@@ -2114,23 +2114,6 @@
       }
     },
     {
-      "id": "prod-islamic-22",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه مودرن لفظ الجلاله (SA80671)",
-      "description": "تابلوه لفظ الجلالة الله بتصميم فني جداري مميز (كود: SA80671).",
-      "basePrice": 549,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 60×90 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-23",
       "categoryId": "canvas-islamic",
       "name": "تابلوهات المعوذات – اكريليك مع برواز ذهبى (SA80665)",
