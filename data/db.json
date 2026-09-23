@@ -2029,6 +2029,23 @@
       }
     },
     {
+      "id": "prod-islamic-p2-2",
+      "categoryId": "canvas-islamic",
+      "name": "لوحات مودرن – الله نور السموات و الارض (SA80643)",
+      "description": "لوحات مودرن آية الله نور السماوات والأرض (كود: SA80643).",
+      "basePrice": 1648,
+      "priceUnit": "طقم لوحات",
+      "calcType": "quantity",
+      "isBestSeller": true,
+      "icon": "fa-star-and-crescent",
+      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
+      "options": {
+        "panelSize": [
+          "طقم 3 قطع فاخرة"
+        ]
+      }
+    },
+    {
       "id": "prod-islamic-p2-3",
       "categoryId": "canvas-islamic",
       "name": "تابلوه مودرن للحائط – الا بذكر الله تطمئن القلوب (SA80638)",
@@ -2518,23 +2535,6 @@
       "options": {
         "panelSize": [
           "مجموعة متكاملة للمجالس"
-        ]
-      }
-    },
-    {
-      "id": "prod-islamic-8",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه مودرن ( رَبِّ اغْفِرْ لِي وَلِوَالِدَيَّ ) (SA90910)",
-      "description": "تابلوه دعاء رب اغفر لي ولوالدي بتصميم مودرن راقي (كود: SA90910).",
-      "basePrice": 596,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 60×90 سم"
         ]
       }
     },
