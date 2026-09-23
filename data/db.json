@@ -2029,23 +2029,6 @@
       }
     },
     {
-      "id": "prod-islamic-1",
-      "categoryId": "canvas-islamic",
-      "name": "لوحات حائط مودرن إسلامية بذكر الله وزهور (SA104169)",
-      "description": "لوحات حائط مودرن إسلامية بذكر الله وزهور رقيقة (كود: SA104169).",
-      "basePrice": 2560,
-      "priceUnit": "طقم 3 قطع",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "3 قطع مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-2",
       "categoryId": "canvas-islamic",
       "name": "لوحات حائط مودرن ايات قرآنية وزهور وردية (SA102274)",
