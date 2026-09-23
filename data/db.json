@@ -15918,23 +15918,6 @@
       }
     },
     {
-      "id": "prod-p88-7",
-      "categoryId": "canvas-islamic",
-      "name": "لوحة ذكر الله تطمئن القلوب (SA26924)",
-      "description": "تابلوه مودرن كانفاس عالي الجودة بتصميم فاخر يناسب الديكور الحديث (كود: SA26924).",
-      "basePrice": 556,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-p88-8",
       "categoryId": "canvas-custom",
       "name": "تابلوه بصمة العائلة الكريمة وشعار البيت (SA26923)",
