@@ -348,10 +348,7 @@
         "canvasMaterial": [
           "كنفس قطن طبيعي مع لمعة ذهبية 4K"
         ]
-      },
-      "discountPercent": 0,
-      "discountExpiry": "",
-      "includeTax": false
+      }
     },
     {
       "id": "prod-safer-4",
@@ -1280,7 +1277,8 @@
         ]
       },
       "discountPercent": 0,
-      "discountExpiry": ""
+      "discountExpiry": "",
+      "includeTax": false
     },
     {
       "id": "prod-tab-islamic-1",
