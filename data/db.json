@@ -2097,23 +2097,6 @@
       }
     },
     {
-      "id": "prod-islamic-p3-5",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه مودرن (فالله خير حافظاً) (SA75270)",
-      "description": "تابلوه مودرن آية فالله خير حافظاً وهو أرحم الراحمين (كود: SA75270).",
-      "basePrice": 456,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": true,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p3-6",
       "categoryId": "canvas-islamic",
       "name": "تابلوه مودرن اسلامى ببرواز بلون خشبى مميز (SA75259)",
