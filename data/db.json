@@ -2437,23 +2437,6 @@
       }
     },
     {
-      "id": "prod-islamic-p5-9",
-      "categoryId": "canvas-islamic",
-      "name": "فاذكروني أذكركم – لوحات بالوان زاهية (SA13129)",
-      "description": "لوحات آية فاذكروني أذكركم بألوان زاهية وجميلة (كود: SA13129).",
-      "basePrice": 912,
-      "priceUnit": "طقم لوحات",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "طقم متناسق"
-        ]
-      }
-    },
-    {
       "id": "prod-islamic-p5-10",
       "categoryId": "canvas-islamic",
       "name": "الحمد لله رب العالمين – لوحات مودرن (SA13126)",
