@@ -717,6 +717,56 @@
                                 تفعيل ضريبة القيمة المضافة الرسمية (14%) تلقائياً على كافة الفواتير والطلبات
                             </label>
                         </div>
+
+                        <!-- CONTACT & SOCIAL MEDIA SETTINGS CARD IN ADMIN -->
+                        <div style="background:#FFF; padding:20px; border-radius:12px; border:1px solid #E2E8F0; margin-bottom:25px; box-shadow:0 4px 12px rgba(0,0,0,0.03);">
+                            <h4 style="color:#1E1B4B; margin-bottom:12px; display:flex; align-items:center; gap:8px; font-size:1.1rem;">
+                                <i class="fa-solid fa-address-book purple-icon"></i> إعدادات بيانات التواصل، الهواتف، وروابط السوشيال ميديا
+                            </h4>
+                            <form id="admin-contact-settings-form" onsubmit="handleSaveContactSettings(event)" style="display:flex; flex-direction:column; gap:12px;">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label><i class="fa-brands fa-whatsapp" style="color:#25D366;"></i> رقم الواتساب</label>
+                                        <input type="text" id="settings-whatsapp" placeholder="+201505028565">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><i class="fa-solid fa-phone" style="color:#7C3AED;"></i> رقم التليفون الأول</label>
+                                        <input type="text" id="settings-phone1" placeholder="01060046150">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label><i class="fa-solid fa-phone" style="color:#7C3AED;"></i> رقم التليفون الثاني</label>
+                                        <input type="text" id="settings-phone2" placeholder="01275270599">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><i class="fa-solid fa-phone-flip" style="color:#0D9488;"></i> الرقم الأرضي</label>
+                                        <input type="text" id="settings-landline" placeholder="0403295911">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label><i class="fa-brands fa-facebook" style="color:#1877F2;"></i> رابط صفحة الفيسبوك</label>
+                                        <input type="text" id="settings-facebook" placeholder="https://facebook.com/tfneen">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><i class="fa-brands fa-tiktok" style="color:#000;"></i> رابط حساب التيك توك</label>
+                                        <input type="text" id="settings-tiktok" placeholder="https://tiktok.com/@tfneen">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label><i class="fa-solid fa-location-dot" style="color:#EF4444;"></i> العنوان التفصيلي</label>
+                                        <input type="text" id="settings-address" placeholder="طنطا - شارع عادل الهرميل (خلف مستشفى دار القمة)">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><i class="fa-solid fa-map-location-dot" style="color:#3B82F6;"></i> رابط موقع خرائط جوجل (Google Maps)</label>
+                                        <input type="text" id="settings-map" placeholder="https://maps.google.com/?q=Tanta">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="align-self:flex-start; margin-top:5px;"><i class="fa-solid fa-save"></i> حفظ إعدادات التواصل</button>
+                            </form>
+                        </div>
                         <div class="admin-stats-grid">
                             <div class="stat-card">
                                 <i class="fa-solid fa-sack-dollar"></i>
@@ -1265,8 +1315,8 @@
                 <div class="social-links">
                     <a href="https://wa.me/201505028565" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
                     <a href="https://maps.app.goo.gl/zHpVyeUfwHZKwDwE7" target="_blank" title="خريطة جوجل"><i class="fa-solid fa-map-location-dot"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook">https://www.facebook.com/tfanenprint</i></a>
-                    <a href="#"><i class="fa-brands fa-tiktok">https://www.tiktok.com/@tfanenprint</i></a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
 
