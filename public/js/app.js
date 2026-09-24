@@ -591,10 +591,7 @@ function filterProducts(catId, btnEl) {
     filterByCategory(catId, btnEl);
 }
 
-// RENDER PRODUCTS GRID UTILITY WITH LAZY PAGINATION
-let currentProductLimit = 16;
-let lastRenderedList = [];
-
+// RENDER PRODUCTS GRID UTILITY
 function renderProducts(list) {
     const grid = document.getElementById('decor-products-grid') ||
                  document.getElementById('prints-products-grid') ||
@@ -603,7 +600,6 @@ function renderProducts(list) {
     if (!grid) return;
 
     let displayList = list || state.products;
-    lastRenderedList = displayList;
 
     if (!displayList || displayList.length === 0) {
         grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:50px; color:#64748B;">
@@ -613,25 +609,7 @@ function renderProducts(list) {
         return;
     }
 
-    const visibleList = displayList.slice(0, currentProductLimit);
-    let html = visibleList.map(prod => buildProductCardHtml(prod)).join('');
-
-    if (displayList.length > currentProductLimit) {
-        html += `
-            <div style="grid-column:1/-1; text-align:center; margin-top:30px;">
-                <button class="btn btn-outline btn-lg" onclick="loadMoreProducts()" style="padding:12px 35px; border-color:#7C3AED; color:#7C3AED; font-weight:800; background:#F3E8FF;">
-                    <i class="fa-solid fa-angles-down"></i> تحميل المزيد (${displayList.length - currentProductLimit} منتج متبقي)
-                </button>
-            </div>
-        `;
-    }
-
-    grid.innerHTML = html;
-}
-
-function loadMoreProducts() {
-    currentProductLimit += 16;
-    renderProducts(lastRenderedList);
+    grid.innerHTML = displayList.map(prod => buildProductCardHtml(prod)).join('');
 }
 
 function buildProductCardHtml(prod) {
@@ -3562,7 +3540,7 @@ function renderHomeBestSellers() {
         return;
     }
 
-    grid.innerHTML = featured.slice(0, 8).map(prod => buildProductCardHtml(prod)).join('');
+    grid.innerHTML = featured.map(prod => buildProductCardHtml(prod)).join('');
 }
 
 function filterDecorPage(catId, btnEl) {
