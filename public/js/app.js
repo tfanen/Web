@@ -2114,6 +2114,7 @@ async function loadAdminStatsAndTables() {
                     <td style="max-width:250px; font-size:0.8rem; color:#64748B;">${s.description}</td>
                     <td>
                         <button class="btn btn-outline btn-sm" onclick="editPrintServiceAdmin('${s.id}')"><i class="fa-solid fa-pen"></i> تعديل</button>
+                        <button class="btn btn-sm" style="background:#10B981; color:#FFF;" onclick="duplicatePrintServiceAdmin('${s.id}')" title="تكرار الخدمة"><i class="fa-solid fa-copy"></i> تكرار</button>
                         <button class="btn btn-sm" style="background:#8B5CF6; color:#FFF;" onclick="promotePrintServiceToHero('${s.id}')" title="عرض خدمة المطبوعات كـ كارت هيرو مميز"><i class="fa-solid fa-star"></i> للهيرو</button>
                         <button class="btn btn-sm" style="background:#EF4444; color:#FFF;" onclick="deletePrintServiceAdmin('${s.id}')"><i class="fa-solid fa-trash"></i></button>
                     </td>
@@ -4010,6 +4011,43 @@ async function batchPromoteProductsToHero() {
     await fetchInitialData();
     switchTab('admin');
     await loadAdminStatsAndTables();
+}
+
+async function duplicatePrintServiceAdmin(id) {
+    const srv = state.printsServices.find(s => s.id === id);
+    if (!srv) return;
+
+    if (!confirm(`هل أنت متأكد من رغبتك في تكرار خدمة "${srv.title}"؟`)) return;
+
+    const duplicatedBody = {
+        title: srv.title + ' (نسخة)',
+        image: srv.image,
+        description: srv.description || '',
+        waText: srv.waText || ''
+    };
+
+    try {
+        const adminUser = state.currentUser || JSON.parse(localStorage.getItem('tfnen_user') || '{"id":"u-admin"}');
+        const token = adminUser.id || 'u-admin';
+
+        const res = await fetch('/api/prints-services', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(duplicatedBody)
+        }).then(r => r.json());
+
+        if (res.success) {
+            alert('✅ تم تكرار خدمة المطبوعات بنجاح!');
+            await fetchInitialData();
+            switchTab('admin');
+            await loadAdminStatsAndTables();
+        }
+    } catch (e) {
+        alert('تعذر تكرار الخدمة');
+    }
 }
 
 // AI SEO OPTIMIZATION ENGINE FOR PRODUCTS
