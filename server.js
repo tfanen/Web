@@ -169,12 +169,17 @@ app.use(authenticate);
 // CONSOLIDATED INITIALIZATION ENDPOINT (HIGH SPEED SINGLE REQUEST FOR 100+ CLIENTS)
 app.get('/api/init-data', (req, res) => {
   const db = readDb();
+  const lightProducts = (db.products || []).map(p => ({
+    ...p,
+    image: (p.image && p.image.startsWith('data:image')) ? 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&auto=format&fit=crop&q=80' : (p.image || 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&auto=format&fit=crop&q=80')
+  }));
+
   res.json({
     success: true,
     data: {
       categories: db.categories || [],
       industries: db.industries || [],
-      products: db.products || [],
+      products: lightProducts,
       tickers: db.tickers || [],
       topBarSlides: db.topBarSlides || [],
       heroCards: db.heroCards || [],
