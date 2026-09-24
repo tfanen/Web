@@ -975,7 +975,7 @@
                             <div style="display:flex; gap:10px; flex-wrap:wrap;">
                                 <button class="btn btn-primary" onclick="openAddProductModal()"><i class="fa-solid fa-plus"></i> إضافة منتج ديكور جديد</button>
                                 <button class="btn" style="background:#0D9488; color:#FFF;" onclick="document.getElementById('bulk-folder-input').click()"><i class="fa-solid fa-folder-open"></i> 📂 استيراد مجلد صور جماعي (أوتوماتيك)</button>
-                                <input type="file" id="bulk-folder-input" multiple accept="image/*" style="display:none;" onchange="handleBulkFolderUpload(event)">
+                                <input type="file" id="bulk-folder-input" multiple accept="image/*" style="display:none;" onchange="handleBulkFolderFileSelected(event)">
                             </div>
                             <div style="display:flex; align-items:center; gap:8px;">
                                 <label style="font-weight:700; font-size:0.85rem; color:#475569; margin:0;">فلترة حسب القسم:</label>
@@ -1480,7 +1480,12 @@
                     <input type="hidden" id="edit-prod-id" value="">
 
                     <div class="form-group">
-                        <label>اسم المنتج أو التابلوه *</label>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                            <label style="margin:0;">اسم المنتج أو التابلوه *</label>
+                            <button type="button" class="btn btn-sm" onclick="generateAiProductSeo()" style="background:linear-gradient(135deg,#7C3AED,#A855F7); color:#FFF; font-size:0.75rem; font-weight:700; padding:3px 10px; border-radius:15px; border:none; cursor:pointer;">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> تحسين SEO بالذكاء الاصطناعي
+                            </button>
+                        </div>
                         <input type="text" id="prod-form-name" required placeholder="مثال: تجاليد بديل خشب مودرن للجدران">
                     </div>
 
@@ -1582,6 +1587,31 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-save"></i> حفظ المنتج في المطبعة</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- BULK IMPORT MODAL WITH CATEGORY DROPDOWN -->
+    <div class="modal-backdrop" id="bulk-import-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-folder-open purple-icon"></i> استيراد مجلد صور جماعي (أوتوماتيك)</h3>
+                <button class="modal-close" onclick="closeModal('bulk-import-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="bulk-import-form" onsubmit="handleBulkImportSubmit(event)">
+                    <div class="form-group">
+                        <label>اختر القسم المستهدف *</label>
+                        <select id="bulk-import-category" required style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:6px; background:#FFF; color:#000;">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>السعر الأساسي الافتراضي (ج.م) *</label>
+                        <input type="number" step="0.01" id="bulk-import-price" required value="456">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-cloud-arrow-up"></i> بدء الاستيراد والمعالجة</button>
                 </form>
             </div>
         </div>

@@ -205,132 +205,18 @@ app.put('/api/settings', (req, res) => {
   res.json({ success: true, message: 'تم تحديث إعدادات الضريبة العامة بنجاح', data: db.settings });
 });
 
-const { google } = require('googleapis');
-
-function getDriveService() {
-  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
-  let privateKey = process.env.GOOGLE_PRIVATE_KEY;
-  if (!clientEmail || !privateKey) return null;
-
-  privateKey = privateKey.replace(/\\n/g, '\n');
-
-  const auth = new google.auth.JWT(
-    clientEmail,
-    null,
-    privateKey,
-    ['https://www.googleapis.com/auth/drive']
-  );
-
-  return google.drive({ version: 'v3', auth });
-}
-
-// 0. Image Upload Endpoint (Google Drive Integration)
-app.post('/api/upload', async (req, res) => {
+// 0. Image Upload Endpoint
+app.post('/api/upload', (req, res) => {
   if (!req.user || req.user.role !== 'admin') {
     return res.status(403).json({ success: false, message: 'غير مصرح لرفع الصور' });
   }
 
-  const { imageBase64, fileName } = req.body;
+  const { imageBase64 } = req.body;
   if (!imageBase64) {
     return res.status(400).json({ success: false, message: 'لم يتم إرسال بيانات الصورة' });
   }
 
-  try {
-    const matches = imageBase64.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
-    if (!matches || matches.length !== 3) {
-      return res.status(400).json({ success: false, message: 'صيغة الصورة غير صحيحة' });
-    }
-
-    const mimeType = matches[1];
-    const buffer = Buffer.from(matches[2], 'base64');
-    const safeFileName = fileName || `prod-${Date.now()}.png`;
-
-    const drive = getDriveService();
-    if (!drive) {
-      // Fallback to base64 if Google Drive credentials are not set in environment variables
-      return res.json({ success: true, message: 'تم تجهيز الصورة بنجاح', url: imageBase64 });
-    }
-
-    const { Readable } = require('stream');
-    const stream = new Readable();
-    stream.push(buffer);
-    stream.push(null);
-
-    const folderId = process.env.GOOGLE_DRIVE_FOLDER_ID;
-
-    const fileMetadata = {
-      name: safeFileName,
-      parents: folderId ? [folderId] : []
-    };
-
-    const media = {
-      mimeType: mimeType,
-      body: stream
-    };
-
-    const response = await drive.files.create({
-      resource: fileMetadata,
-      media: media,
-      fields: 'id'
-    });
-
-    const fileId = response.data.id;
-
-    await drive.permissions.create({
-      fileId: fileId,
-      requestBody: {
-        role: 'reader',
-        type: 'anyone'
-      }
-    });
-
-    const publicUrl = `https://lh3.googleusercontent.com/d/${fileId}`;
-
-    res.json({ success: true, message: 'تم رفع الصورة إلى Google Drive بنجاح', url: publicUrl });
-  } catch (err) {
-    console.error('Google Drive upload error:', err);
-    // Fallback to base64 so saving never fails
-    res.json({ success: true, message: 'تم تجهيز الصورة للحفظ', url: imageBase64 });
-  }
-});
-
-// TEST GOOGLE DRIVE CONNECTION ENDPOINT
-app.get('/api/test-drive', async (req, res) => {
-  try {
-    const drive = getDriveService();
-    if (!drive) {
-      return res.json({
-        success: false,
-        message: '❌ بيانات اعتماد جوجل درايف (GOOGLE_CLIENT_EMAIL أو GOOGLE_PRIVATE_KEY) غير موجودة في متغيرات البيئة بـ Vercel.'
-      });
-    }
-
-    const folderId = process.env.GOOGLE_DRIVE_FOLDER_ID;
-
-    const response = await drive.files.create({
-      resource: {
-        name: 'test-connection.txt',
-        parents: folderId ? [folderId] : []
-      },
-      media: {
-        mimeType: 'text/plain',
-        body: 'مرحباً بك من مطبعة تفنين! تم الاتصال بنجاح بـ Google Drive.'
-      },
-      fields: 'id, name'
-    });
-
-    res.json({
-      success: true,
-      message: `✅ نجح الاتصال بنجاح! تم إنشاء ملف تجريبي في مجلد جوجل درايف برقم ID: ${response.data.id}. تحقق من مجلدك الآن!`
-    });
-  } catch (err) {
-    console.error('Test drive error:', err);
-    res.json({
-      success: false,
-      message: '❌ فشل الاتصال بجوجل درايف بسبب الخطأ التالي: ' + err.message,
-      fullError: err.errors || err.stack
-    });
-  }
+  res.json({ success: true, message: 'تم تجهيز الصورة بنجاح', url: imageBase64 });
 });
 
 // 1. Categories & Industries

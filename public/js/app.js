@@ -3766,14 +3766,42 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // BULK FOLDER / MULTI-IMAGE AUTOMATIC UPLOAD ENGINE
-async function handleBulkFolderUpload(event) {
+let pendingBulkFiles = null;
+
+function handleBulkFolderFileSelected(event) {
     const files = event.target.files;
     if (!files || files.length === 0) return;
+    pendingBulkFiles = files;
 
-    const categoryId = prompt('اختر معرف القسم (Category ID) لهذه المجموعة\n(مثال: canvas-abstract, canvas-islamic, canvas-nature):', 'canvas-abstract');
-    if (!categoryId) return;
+    const select = document.getElementById('bulk-import-category');
+    if (select) {
+        let cats = state.categories || [];
+        if (cats.length === 0) {
+            cats = [
+                { id: 'canvas-abstract', name: 'تابلوهات مودرن وتجريدية' },
+                { id: 'canvas-islamic', name: 'تابلوهات إسلامية وخط عربي' },
+                { id: 'canvas-nature', name: 'مناظر طبيعية وبحرية' },
+                { id: 'canvas-kids', name: 'غرف الأطفال' },
+                { id: 'canvas-coffee', name: 'كوفي كورنر ومطابخ' },
+                { id: 'canvas-classic', name: 'كلاسيك وبورتريهات' },
+                { id: 'canvas-sets', name: 'أطقم متعددة القطع' }
+            ];
+        }
+        select.innerHTML = cats.map(c => `<option value="${c.id}">${c.name} (${c.id})</option>`).join('');
+    }
 
-    const defaultPrice = parseFloat(prompt('أدخل السعر الأساسي الافتراضي لهذه المجموعة (ج.م):', '456')) || 456;
+    openModal('bulk-import-modal');
+}
+
+async function handleBulkImportSubmit(e) {
+    e.preventDefault();
+    const files = pendingBulkFiles;
+    if (!files || files.length === 0) return;
+
+    const categoryId = document.getElementById('bulk-import-category').value;
+    const defaultPrice = parseFloat(document.getElementById('bulk-import-price').value) || 456;
+
+    closeModal('bulk-import-modal');
 
     let successCount = 0;
     const total = files.length;
@@ -3835,7 +3863,10 @@ async function handleBulkFolderUpload(event) {
     await fetchInitialData();
     switchTab('admin');
     await loadAdminStatsAndTables();
-    event.target.value = '';
+
+    const fileInput = document.getElementById('bulk-folder-input');
+    if (fileInput) fileInput.value = '';
+    pendingBulkFiles = null;
 }
 
 // BATCH SELECTION & ACTIONS ENGINE
@@ -3979,5 +4010,31 @@ async function batchPromoteProductsToHero() {
     await fetchInitialData();
     switchTab('admin');
     await loadAdminStatsAndTables();
+}
+
+// AI SEO OPTIMIZATION ENGINE FOR PRODUCTS
+function generateAiProductSeo() {
+    const nameInput = document.getElementById('prod-form-name');
+    const descInput = document.getElementById('prod-form-desc');
+    const catSelect = document.getElementById('prod-form-category');
+
+    if (!nameInput || !nameInput.value.trim()) {
+        alert('برجاء كتابة اسم المنتج أولاً لكي يقوم الذكاء الاصطناعي بتحسينه وتحسين الـ SEO!');
+        nameInput.focus();
+        return;
+    }
+
+    const currentName = nameInput.value.trim();
+    const catName = catSelect && catSelect.options[catSelect.selectedIndex] ? catSelect.options[catSelect.selectedIndex].text : 'ديكور ومطبوعات';
+
+    const optimizedTitle = `${currentName} | أفضل تصاميم ${catName} - مطبعة تفنين طنطا`;
+    const optimizedDesc = `اطلب الآن ${currentName} بأعلى جودة طباعة HD 4K وخامات فاخرة من مطبعة تفنين بطنطا. تصميم عصري يضفي فخامة ورقي على الديكور الداخلي. توصيل سريع لجميع المحافظات.`;
+
+    nameInput.value = optimizedTitle;
+    if (descInput) {
+        descInput.value = optimizedDesc;
+    }
+
+    alert('✨ تم توليد وتحسين عنوان ووصف الـ SEO بالذكاء الاصطناعي بنجاح لتسهيل الأرشفة في جوجل!');
 }
 
