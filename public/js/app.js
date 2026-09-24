@@ -3772,6 +3772,53 @@ function handleBulkFolderFileSelected(event) {
     openModal('bulk-import-modal');
 }
 
+// CONCURRENCY & RETRY ENGINE FOR BULK UPLOAD
+async function runWithConcurrency(items, worker, concurrency = 2) {
+    const results = [];
+    let index = 0;
+
+    async function runner() {
+        while (true) {
+            const currentIndex = index++;
+            if (currentIndex >= items.length) return;
+            try {
+                results[currentIndex] = await worker(items[currentIndex], currentIndex);
+            } catch (error) {
+                results[currentIndex] = { success: false, error: error.message };
+            }
+        }
+    }
+
+    const workers = Array.from({ length: Math.min(concurrency, items.length) }, () => runner());
+    await Promise.all(workers);
+    return results;
+}
+
+async function fetchWithRetry(url, options, attempts = 3) {
+    let lastError;
+    for (let attempt = 0; attempt < attempts; attempt++) {
+        try {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 60000);
+
+            const response = await fetch(url, { ...options, signal: controller.signal });
+            clearTimeout(timeout);
+
+            if (response.ok) return response;
+
+            const body = await response.text();
+            if (response.status !== 429 && response.status < 500) {
+                throw new Error(`HTTP ${response.status}: ${body.slice(0, 300)}`);
+            }
+            lastError = new Error(`Temporary HTTP ${response.status}: ${body.slice(0, 300)}`);
+        } catch (error) {
+            lastError = error;
+        }
+        await new Promise(resolve => setTimeout(resolve, 1000 * Math.pow(2, attempt)));
+    }
+    throw lastError;
+}
+
 async function handleBulkImportSubmit(e) {
     e.preventDefault();
     const files = pendingBulkFiles;
@@ -3782,30 +3829,25 @@ async function handleBulkImportSubmit(e) {
 
     closeModal('bulk-import-modal');
 
-    let successCount = 0;
     const failedFiles = [];
+    let successCount = 0;
     const total = files.length;
+    const fileArray = Array.from(files).filter(f => f.type.startsWith('image/'));
 
     const statusDiv = document.createElement('div');
     statusDiv.id = 'bulk-progress-overlay';
     statusDiv.style.cssText = 'position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#1E1B4B; color:#FFF; padding:15px 30px; border-radius:12px; z-index:99999; font-weight:700; box-shadow:0 10px 30px rgba(0,0,0,0.4); font-size:1rem; direction:rtl;';
-    statusDiv.innerHTML = `<i class="fa-solid fa-spinner fa-spin" style="margin-left:8px;"></i> جاري استيراد ومعالجة الصور (0 من ${total})...`;
+    statusDiv.innerHTML = `<i class="fa-solid fa-spinner fa-spin" style="margin-left:8px;"></i> جاري المعالجة والاستيراد الجماعي (0 من ${total})...`;
     document.body.appendChild(statusDiv);
 
-    for (let i = 0; i < total; i++) {
-        const file = files[i];
-        if (!file.type.startsWith('image/')) {
-            failedFiles.push(`${file.name} (ليست صورة صالحة)`);
-            continue;
-        }
-
+    await runWithConcurrency(fileArray, async (file, index) => {
         try {
-            statusDiv.innerHTML = `<i class="fa-solid fa-spinner fa-spin" style="margin-left:8px;"></i> جاري معالجة واستيراد الصورة (${i + 1} من ${total}): ${file.name}`;
+            statusDiv.innerHTML = `<i class="fa-solid fa-spinner fa-spin" style="margin-left:8px;"></i> جاري معالجة واستيراد الصورة (${index + 1} من ${fileArray.length}): ${file.name}`;
 
             let cleanName = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, ' ');
             cleanName = 'لوحة فنية مودرن - ' + cleanName;
 
-            const compressedBase64 = await compressImageFile(file, 500, 0.75);
+            const compressedBase64 = await compressImageFile(file, 450, 0.7);
 
             const productData = {
                 name: cleanName,
@@ -3817,36 +3859,37 @@ async function handleBulkImportSubmit(e) {
                 discountExpiry: '',
                 image: compressedBase64,
                 description: 'تابلوه مودرن كانفاس عالي الجودة بتصميم فني فاخر يضفي لمسة ساحرة على ديكور منزلك.',
-                isBestSeller: (i === 0),
+                isBestSeller: (index === 0),
                 includeTax: false
             };
 
             const adminUser = state.currentUser || JSON.parse(localStorage.getItem('tfnen_user') || '{"id":"u-admin"}');
             const token = adminUser.id || 'u-admin';
 
-            const res = await fetch('/api/products', {
+            const response = await fetchWithRetry('/api/products', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(productData)
-            }).then(r => r.json());
+            }, 3);
 
-            if (res.success) {
+            const result = await response.json();
+            if (result.success) {
                 successCount++;
             } else {
-                failedFiles.push(`${file.name} (${res.message || 'فشل الحفظ'})`);
+                failedFiles.push(`${file.name} (${result.message || 'فشل الحفظ'})`);
             }
         } catch (err) {
-            console.error('Bulk upload item error:', err);
-            failedFiles.push(`${file.name} (خطأ في الاتصال)`);
+            console.error('Bulk upload error for file:', file.name, err);
+            failedFiles.push(`${file.name}: ${err.message}`);
         }
-    }
+    }, 2);
 
     document.body.removeChild(statusDiv);
 
-    let reportMsg = `✅ تم بنجاح استيراد ${successCount} من أصل ${total} صورة!`;
+    let reportMsg = `✅ تم بنجاح استيراد ${successCount} من أصل ${fileArray.length} صورة!`;
     if (failedFiles.length > 0) {
         reportMsg += `\n\n⚠️ الملفات التي فشل رفعها (${failedFiles.length}):\n` + failedFiles.join('\n');
     }
