@@ -196,18 +196,28 @@ app.get('/api/settings', (req, res) => {
   res.json({ success: true, data: db.settings || { includeTax: false } });
 });
 
-app.put('/api/settings', (req, res) => {
+app.put('/api/settings', async (req, res) => {
   if (!req.user || req.user.role !== 'admin') {
     return res.status(403).json({ success: false, message: 'غير مصرح للقيام بهذه العملية' });
   }
 
-  const { includeTax } = req.body;
+  const { includeTax, whatsapp, phone1, phone2, landline, facebook, tiktok, address, googleMap } = req.body;
   const db = readDb();
   if (!db.settings) db.settings = {};
-  db.settings.includeTax = includeTax === true || includeTax === 'true';
-  writeDb(db);
 
-  res.json({ success: true, message: 'تم تحديث إعدادات الضريبة العامة بنجاح', data: db.settings });
+  if (includeTax !== undefined) db.settings.includeTax = includeTax === true || includeTax === 'true';
+  if (whatsapp !== undefined) db.settings.whatsapp = whatsapp;
+  if (phone1 !== undefined) db.settings.phone1 = phone1;
+  if (phone2 !== undefined) db.settings.phone2 = phone2;
+  if (landline !== undefined) db.settings.landline = landline;
+  if (facebook !== undefined) db.settings.facebook = facebook;
+  if (tiktok !== undefined) db.settings.tiktok = tiktok;
+  if (address !== undefined) db.settings.address = address;
+  if (googleMap !== undefined) db.settings.googleMap = googleMap;
+
+  await writeDb(db);
+
+  res.json({ success: true, message: 'تم تحديث إعدادات المطبعة بنجاح', data: db.settings });
 });
 
 // 0. Image Upload Endpoint
