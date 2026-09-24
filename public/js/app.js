@@ -2015,6 +2015,17 @@ async function loadAdminStatsAndTables() {
             taxToggle.checked = !!(state.settings && state.settings.includeTax);
         }
 
+        // Sync Contact & Social Settings in Admin
+        const s = state.settings || {};
+        if (document.getElementById('settings-whatsapp')) document.getElementById('settings-whatsapp').value = s.whatsapp || '';
+        if (document.getElementById('settings-phone1')) document.getElementById('settings-phone1').value = s.phone1 || '';
+        if (document.getElementById('settings-phone2')) document.getElementById('settings-phone2').value = s.phone2 || '';
+        if (document.getElementById('settings-landline')) document.getElementById('settings-landline').value = s.landline || '';
+        if (document.getElementById('settings-facebook')) document.getElementById('settings-facebook').value = s.facebook || '';
+        if (document.getElementById('settings-tiktok')) document.getElementById('settings-tiktok').value = s.tiktok || '';
+        if (document.getElementById('settings-address')) document.getElementById('settings-address').value = s.address || '';
+        if (document.getElementById('settings-map')) document.getElementById('settings-map').value = s.googleMap || '';
+
         // Render Visitor Counter
         let visitorsCount = parseInt(localStorage.getItem('tfnen_visitors_count') || '1480');
         if (!sessionStorage.getItem('tfnen_visited')) {
@@ -4108,5 +4119,46 @@ function generateAiProductSeo() {
     }
 
     alert('✨ تم توليد وتحسين عنوان ووصف الـ SEO بالذكاء الاصطناعي بنجاح لتسهيل الأرشفة في جوجل!');
+}
+
+// CONTACT & SOCIAL MEDIA SETTINGS SAVE HANDLER
+async function handleSaveContactSettings(e) {
+    e.preventDefault();
+    const body = {
+        whatsapp: document.getElementById('settings-whatsapp').value.trim(),
+        phone1: document.getElementById('settings-phone1').value.trim(),
+        phone2: document.getElementById('settings-phone2').value.trim(),
+        landline: document.getElementById('settings-landline').value.trim(),
+        facebook: document.getElementById('settings-facebook').value.trim(),
+        tiktok: document.getElementById('settings-tiktok').value.trim(),
+        address: document.getElementById('settings-address').value.trim(),
+        googleMap: document.getElementById('settings-map').value.trim()
+    };
+
+    const adminUser = state.currentUser || JSON.parse(localStorage.getItem('tfnen_user') || '{"id":"u-admin"}');
+    const token = adminUser.id || 'u-admin';
+
+    try {
+        const res = await fetch('/api/settings', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(body)
+        }).then(r => r.json());
+
+        if (res.success) {
+            alert('✅ تم حفظ إعدادات التواصل والسوشيال ميديا بنجاح!');
+            await fetchInitialData();
+            switchTab('admin');
+            await loadAdminStatsAndTables();
+        } else {
+            alert(res.message || 'فشل الحفظ');
+        }
+    } catch (err) {
+        console.error('Save contact settings error:', err);
+        alert('حدث خطأ أثناء حفظ الإعدادات');
+    }
 }
 
