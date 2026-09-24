@@ -15204,23 +15204,6 @@
       }
     },
     {
-      "id": "prod-p87-3",
-      "categoryId": "canvas-islamic",
-      "name": "تابلوه دعاء الرزق والبركة والتوفيق (SA26938)",
-      "description": "تابلوه مودرن كانفاس عالي الجودة بتصميم فاخر يناسب الديكور الحديث (كود: SA26938).",
-      "basePrice": 656,
-      "priceUnit": "تابلوه قطعة واحدة",
-      "calcType": "quantity",
-      "isBestSeller": false,
-      "icon": "fa-star-and-crescent",
-      "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&auto=format&fit=crop&q=80",
-      "options": {
-        "panelSize": [
-          "مقاس 50×70 سم"
-        ]
-      }
-    },
-    {
       "id": "prod-p87-4",
       "categoryId": "canvas-custom",
       "name": "لوحة ذكريات السفر والرحلات السعيدة (SA26937)",
