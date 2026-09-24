@@ -3783,6 +3783,7 @@ async function handleBulkImportSubmit(e) {
     closeModal('bulk-import-modal');
 
     let successCount = 0;
+    const failedFiles = [];
     const total = files.length;
 
     const statusDiv = document.createElement('div');
@@ -3793,7 +3794,10 @@ async function handleBulkImportSubmit(e) {
 
     for (let i = 0; i < total; i++) {
         const file = files[i];
-        if (!file.type.startsWith('image/')) continue;
+        if (!file.type.startsWith('image/')) {
+            failedFiles.push(`${file.name} (ليست صورة صالحة)`);
+            continue;
+        }
 
         try {
             statusDiv.innerHTML = `<i class="fa-solid fa-spinner fa-spin" style="margin-left:8px;"></i> جاري معالجة واستيراد الصورة (${i + 1} من ${total}): ${file.name}`;
@@ -3831,14 +3835,23 @@ async function handleBulkImportSubmit(e) {
 
             if (res.success) {
                 successCount++;
+            } else {
+                failedFiles.push(`${file.name} (${res.message || 'فشل الحفظ'})`);
             }
         } catch (err) {
             console.error('Bulk upload item error:', err);
+            failedFiles.push(`${file.name} (خطأ في الاتصال)`);
         }
     }
 
     document.body.removeChild(statusDiv);
-    alert(`✅ تم بنجاح استيراد ${successCount} من أصل ${total} صورة وإنشاء منتجاتها تلقائياً!`);
+
+    let reportMsg = `✅ تم بنجاح استيراد ${successCount} من أصل ${total} صورة!`;
+    if (failedFiles.length > 0) {
+        reportMsg += `\n\n⚠️ الملفات التي فشل رفعها (${failedFiles.length}):\n` + failedFiles.join('\n');
+    }
+    alert(reportMsg);
+
     await fetchInitialData();
     switchTab('admin');
     await loadAdminStatsAndTables();
