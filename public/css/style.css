@@ -69,7 +69,7 @@ a {
 
 a:hover { color: var(--primary-purple-dark); }
 
-/* BUTTONS */
+/* BUTTONS WITH SMOOTH MODERN ANIMATIONS */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -82,7 +82,18 @@ a:hover { color: var(--primary-purple-dark); }
     border-radius: var(--radius-md);
     border: 1px solid transparent;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 22px rgba(124, 58, 237, 0.35);
+}
+
+.btn:active {
+    transform: translateY(-1px) scale(0.98);
 }
 
 .btn-primary {
@@ -92,8 +103,8 @@ a:hover { color: var(--primary-purple-dark); }
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(124, 58, 237, 0.45);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 28px rgba(124, 58, 237, 0.55);
 }
 
 .btn-secondary {
@@ -103,7 +114,7 @@ a:hover { color: var(--primary-purple-dark); }
 
 .btn-secondary:hover {
     background-color: var(--bg-dark-card);
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
 }
 
 .btn-outline {
@@ -113,6 +124,9 @@ a:hover { color: var(--primary-purple-dark); }
 }
 
 .btn-outline:hover {
+    background: rgba(124, 58, 237, 0.08);
+    transform: translateY(-3px) scale(1.02);
+}
     background-color: var(--primary-purple-light);
 }
 
